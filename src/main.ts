@@ -1,18 +1,18 @@
-import { createClient } from "redis";
+import express,{ Request, Response, Application } from "express";
+import dotenv from 'dotenv';
+import Route from "./Router/route";
+dotenv.config()
 
-const test = async () => {
-    try {
-        const client = await createClient()
-        .on('error',err => console.log(err))
-        .connect();
+const app : Application = express();
+const port = process.env.PORT || 30000
 
-        await client.set("nom","Tsitohaina");
-        const value = await client.get("nom");
-        console.log(value);
-    } catch (error) {
-        console.log(error);
-    } finally {
-        console.log("fin");   
-    }
-}    
-test();
+app.use(express.json())
+
+const routes : Route = new Route(app)
+routes.initialiser();
+
+app.listen(port, () =>{
+    console.log(`server running on port ${port}`);
+})
+
+
