@@ -2,6 +2,7 @@ import { Application, Request, Response } from "express";
 import { ReasonPhrases, StatusCodes } from "http-status-codes";
 import { pool } from "../db/connect";
 import { v4 as uuidv4 } from "uuid"
+import Avis from "../Models/avis.model";
 
 export default class Route {
     private rout : Application
@@ -71,6 +72,36 @@ export default class Route {
                 throw error
             }
             
+        })
+
+        this.rout.post('/avis/:id_livre',async (req : Request, res : Response) =>{
+            const {
+                id_utilisateur : id_utilisateur,
+                note : note,
+                commentaire : commentaire,
+                datetime : datetime
+            } = req.body
+            const { id_livre : id_livre } = req.params
+            
+            const data = {
+                id_livre : id_livre,
+                id_utilisateur : id_utilisateur,
+                note : note,
+                commentaire : commentaire,
+                datetime : datetime
+            }
+
+            try{
+                const avis = new Avis(data)
+                await avis.save();
+                res.status(StatusCodes.CREATED).json({ 
+                    "status" : ReasonPhrases.CREATED,
+                    "message" : data
+                 })
+            }catch(error){
+                throw error
+            }
+
         })
     }
 }

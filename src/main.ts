@@ -1,6 +1,7 @@
-import express,{ Request, Response, Application } from "express";
+import express,{ Application } from "express";
 import dotenv from 'dotenv';
 import Route from "./Router/route";
+import { connectMongo } from "./db/connect";
 dotenv.config()
 
 const app : Application = express();
@@ -13,6 +14,7 @@ routes.initialiser();
 
 app.listen(port, () =>{
     console.log(`server running on port ${port}`);
+    connectMongo();
 })
 
 
