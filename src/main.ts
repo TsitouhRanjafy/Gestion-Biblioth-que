@@ -1,8 +1,7 @@
 import express,{ Application } from "express";
 import dotenv from 'dotenv';
 import Route from "./Router/route";
-import {  syncDatabaseMysql } from "./db/connect";
-// import { connectMongo } from "./db/connect";
+import {  connectMongo, syncDatabaseMysql } from "./db/connect";
 
 dotenv.config()
 
@@ -19,7 +18,7 @@ app.listen(port, () =>{
     try{
         console.log(`server running on port ${port}`);
         syncDatabaseMysql();
-        // connectMongo();    
+        connectMongo();    
     } catch(error){
         console.error(error);
     }

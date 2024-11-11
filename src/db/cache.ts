@@ -1,13 +1,11 @@
 import { createClient } from 'redis';
 import Livre from '../Models/livre.model';
-import { NIL } from 'uuid';
 
 
 export const CacheRedisToutLivre = async (livres : Livre[]) =>{
     try{
         const client = createClient();
         await client.connect();
-
         const nombreToutLivres = await client.get('nombreToutLivres');
         if (nombreToutLivres != null){
             const n : number = parseInt(nombreToutLivres);
@@ -61,7 +59,8 @@ export const CacheRedisTopLivre = async (livres : Object) =>{
                 'titre': livre.titre+" ", 
                 'auteur': livre.auteur+" ", 
                 'sortie': livre.sortie+" ",
-                'disponible': livre.disponible+" "
+                'disponible': livre.disponible+" ",
+                'nombre_emprunts': livre.nombre_emprunts+" "
             })
         })
 
