@@ -439,3 +439,27 @@ ORDER BY nombre_emprunts DESC
 
 
 
+
+
+
+const { Op } = require('sequelize');
+
+const livres = await Livres.findAll({
+    attributes: [
+        'id',
+        'titre',
+        'auteur',
+        'sortie',
+        'disponible',
+        [sequelize.fn('COUNT', sequelize.col('emprunts.id_emprunt')), 'nombre_emprunts']
+    ],
+    include: [
+        {
+            model: Emprunts,
+            attributes: [],
+            required: true
+        }
+    ],
+    group: ['Livres.id'],
+    order: [[sequelize.literal('nombre_emprunts'), 'DESC']]
+});

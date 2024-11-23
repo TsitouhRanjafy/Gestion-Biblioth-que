@@ -7,14 +7,20 @@ export const CacheRedisToutLivre = async (livres : Livre[]) =>{
         const client = createClient();
         await client.connect();
         const nombreToutLivres = await client.get('nombreToutLivres');
+        // Oui, misy cache anaty redis isan'ny livre rehetra
+        // otrzay ihany ko ny top 20, nasiako isany foana na 20 ary ilay izy
+        // Tester s'il y des donnée précedant
         if (nombreToutLivres != null){
+            // si oui, reinitialiser
             const n : number = parseInt(nombreToutLivres);
             console.log(' livres précedant:',n);
             
             for (let i=0;i<n;i++){
                 await client.hDel(`livres:${i}`,['id','titre','auteur','sortie','disponible'])  
             }
+            // fafaina isan'ny livre de lasa null fa tsy 0
             await client.del('nombreToutLivres');
+
         }
 
         let a = 0;

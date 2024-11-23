@@ -21,10 +21,16 @@ export default class RouteLivre{
                 const client = createClient();
                 await client.connect();
                 const nombreToutLivres = await client.get('nombreToutLivres');
+                // Tester s'il y des livres dans redis
                 if (nombreToutLivres != null){
+                    // si oui, recuperer oui oui
                     const n : number = parseInt(nombreToutLivres);
                     for (let i=0;i<n;i++){
                         livres.push(await client.hGetAll(`livres:${i}`));
+                        // Hash nampiasaiko
+                        // izany hoe O(n) 
+                        // ka amizay afaka tena mahaleo tena ilay Base de donne redis
+                        // ohatra hoe aka livre izay tiko zah
                     }
                     res.status(StatusCodes.OK).json({
                         "status" : ReasonPhrases.OK,
@@ -32,9 +38,13 @@ export default class RouteLivre{
                         "toutLivres" : livres
                     });
                     return;
+                    // mijanona eto ilay izy 
                 }
-
+                // De si non, any amn mysql no maka ilay tout livres
                 livres  = await Livre.findAll();
+                // miditra aon amo zany
+                // Livre Model 
+                // de sady cachena nay amn redis
                 CacheRedisToutLivre(livres);
                 res.status(StatusCodes.OK).json(livres)
             } catch(error){
@@ -56,6 +66,7 @@ export default class RouteLivre{
                         for (let i=0;i<n;i++){
                             topLivres.push(await client.hGetAll(`TopLivres:${i}`));
                         }
+                        
                         res.status(StatusCodes.OK).json({
                             "nombreTopLivres": n,
                             "topLivres" : topLivres
@@ -84,6 +95,8 @@ export default class RouteLivre{
                 } catch (error) {
                     console.error(error);
                     res.status(StatusCodes.BAD_REQUEST).json(error)
+                } finally{
+
                 }
             }
             getLivresTop();
@@ -94,3 +107,4 @@ export default class RouteLivre{
         return this.router
     }
 }
+
