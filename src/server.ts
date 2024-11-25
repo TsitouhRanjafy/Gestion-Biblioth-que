@@ -1,7 +1,8 @@
 import express,{ Application } from "express";
 import dotenv from 'dotenv';
 import Route from "./Router/route";
-import {  connectMongo, syncDatabaseMysql } from "./db/connect";
+import { syncDatabaseMysql } from "./DA/index";
+import { connectMongo } from "./DA/index";
 
 dotenv.config()
 

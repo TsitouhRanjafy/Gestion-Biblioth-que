@@ -1,5 +1,5 @@
 import { Optional,Model, DataTypes } from "sequelize";
-import sequelize from "../db/connect";
+import { sequelize } from "../DA/index";
 
 interface UtilisateurAttributes {
     id: string,

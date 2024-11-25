@@ -2,8 +2,9 @@ import express, { Router,Response, Request } from "express";
 import { ReasonPhrases, StatusCodes } from "http-status-codes";
 import { createClient } from "redis";
 import { CacheRedisTopLivre, CacheRedisToutLivre } from "../db/cache";
-import sequelize from "../db/connect";
-import Livre from "../Models/livre.model";
+import { sequelize } from "../DA/index";
+import { Livre } from "../types/index";
+import Emprunt from "../Models/emprunt.model";
 
 export default class RouteLivre{
     private router : Router
@@ -73,23 +74,25 @@ export default class RouteLivre{
                         });
                         return;
                     }
-                    
-                    const [livres,metadata] = await sequelize.query(
-                        `
-                            SELECT  
-                                l.id,
-                                l.titre,
-                                l.auteur,
-                                l.sortie, 
-                                l.disponible,
-                                COUNT(e.id_emprunt) AS nombre_emprunts 
-                            FROM livres l
-                            JOIN emprunts e ON e.id_livre = l.id
-                            GROUP BY l.id
-                            ORDER BY nombre_emprunts DESC
-                       `
-                    )
-                    console.log(livres);
+                    const livres = await Livre.findAll({
+                        attributes : [
+                            'id',
+                            'titre',
+                            'auteur',
+                            'sortie',
+                            'disponible',
+                            [sequelize.fn('COUNT',sequelize.col('allEmprunt.id_emprunt')),'nombre_emprunts'],
+                        ],
+                        include: [
+                            {
+                                model : Emprunt,
+                                attributes : [],
+                                as: 'allEmprunt'
+                            },
+                        ],
+                        group : ['livre.id'],
+                        order : [[sequelize.literal('nombre_emprunts'),'DESC']],
+                    });
                     CacheRedisTopLivre(livres);   
                     res.status(StatusCodes.OK).json(livres);
                 } catch (error) {

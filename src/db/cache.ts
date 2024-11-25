@@ -1,5 +1,5 @@
 import { createClient } from 'redis';
-import Livre from '../Models/livre.model';
+import { Livre } from '../types/index';
 
 
 export const CacheRedisToutLivre = async (livres : Livre[]) =>{
@@ -7,11 +7,7 @@ export const CacheRedisToutLivre = async (livres : Livre[]) =>{
         const client = createClient();
         await client.connect();
         const nombreToutLivres = await client.get('nombreToutLivres');
-        // Oui, misy cache anaty redis isan'ny livre rehetra
-        // otrzay ihany ko ny top 20, nasiako isany foana na 20 ary ilay izy
-        // Tester s'il y des donnée précedant
         if (nombreToutLivres != null){
-            // si oui, reinitialiser
             const n : number = parseInt(nombreToutLivres);
             console.log(' livres précedant:',n);
             
@@ -25,7 +21,7 @@ export const CacheRedisToutLivre = async (livres : Livre[]) =>{
 
         let a = 0;
         Object.values(livres).forEach(async (livre,i) =>{
-            const dataLivre = livre.dataValues
+            const dataLivre = livre.dataValues;
             a++;
             await client.hSet(`livres:${i}`,{ 
                 'id': dataLivre.id+" ",
@@ -43,7 +39,7 @@ export const CacheRedisToutLivre = async (livres : Livre[]) =>{
     }
 }
 
-export const CacheRedisTopLivre = async (livres : Object) =>{
+export const CacheRedisTopLivre = async (livres : Livre[]) =>{
     try{
         const client = createClient();
         await client.connect();
@@ -59,14 +55,15 @@ export const CacheRedisTopLivre = async (livres : Object) =>{
 
         let a = 0;
         Object.values(livres).forEach(async (livre,i) =>{
+            const dataLivre = livre.dataValues;
             a++;
             await client.hSet(`TopLivres:${i}`,{ 
-                'id': livre.id+" ",
-                'titre': livre.titre+" ", 
-                'auteur': livre.auteur+" ", 
-                'sortie': livre.sortie+" ",
-                'disponible': livre.disponible+" ",
-                'nombre_emprunts': livre.nombre_emprunts+" "
+                'id': dataLivre.id+" ",
+                'titre': dataLivre.titre+" ", 
+                'auteur': dataLivre.auteur+" ", 
+                'sortie': dataLivre.sortie+" ",
+                'disponible': dataLivre.disponible+" ",
+                'nombre_emprunts': dataLivre.nombre_emprunts+" "
             })
         })
 

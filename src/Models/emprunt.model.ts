@@ -1,9 +1,9 @@
 import { ExpressYupMiddlewareInterface } from "express-yup-middleware";
 import * as Yup from "yup";
 import { Model,DataTypes, Optional } from "sequelize";
-import Livre from "./livre.model";
+import { Livre } from "../types/index";
 import Utilisateur from "./utilisateur.model";
-import sequelize from "../db/connect";
+import { sequelize } from "../DA/index";
 
 
 export const empruntSchemaValidator : ExpressYupMiddlewareInterface = {
@@ -92,5 +92,6 @@ Emprunt.init(
         timestamps: true
     }
 )
-
+Livre.hasMany(Emprunt,{ foreignKey: 'id_livre', as: 'allEmprunt' });
+Emprunt.belongsTo(Livre,{ foreignKey: 'id_livre', as: 'livreEmprunter' });
 export default Emprunt

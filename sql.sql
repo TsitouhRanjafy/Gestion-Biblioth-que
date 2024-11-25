@@ -437,14 +437,7 @@ SELECT e.id_livre, COUNT(*) AS nombre_emprunts FROM emprunts e
 GROUP BY e.id_livre
 ORDER BY nombre_emprunts DESC
 
-
-
-
-
-
-const { Op } = require('sequelize');
-
-const livres = await Livres.findAll({
+/* const livres = await Livres.findAll({
     attributes: [
         'id',
         'titre',
@@ -462,4 +455,4 @@ const livres = await Livres.findAll({
     ],
     group: ['Livres.id'],
     order: [[sequelize.literal('nombre_emprunts'), 'DESC']]
-});
+}); */

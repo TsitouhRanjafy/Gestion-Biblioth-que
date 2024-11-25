@@ -3,7 +3,7 @@ import { ReasonPhrases, StatusCodes } from "http-status-codes";
 import { v4 as uuidv4 } from "uuid";
 import Utilisateur from "../Models/utilisateur.model";
 import Emprunt from "../Models/emprunt.model";
-import Livre from "../Models/livre.model";
+import { Livre } from "../types/index";
 
 export default class RouteEmprunt{
     private router : Router

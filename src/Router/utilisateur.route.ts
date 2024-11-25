@@ -1,5 +1,5 @@
 import express, { Router, Request, Response } from "express";
-import sequelize from "../db/connect";
+import { sequelize } from "../DA";
 import Utilisateur from "../Models/utilisateur.model";
 import { ReasonPhrases, StatusCodes } from "http-status-codes";
 

@@ -1,28 +1,27 @@
 import { DataTypes, Model, Optional } from "sequelize";
-import sequelize from "../db/connect";
+import { sequelize } from "../../DA/index";
 
-// Définir les attribut d'un livre
 interface LivreAttributes {
     id: string,
     titre: string,
     auteur: string,
     sortie: Date,
-    disponible: string
+    disponible: string,
+    nombre_emprunts: number
 }
 
 //  Certains attributs sont optionnels pour les nouveaux enregistrement
-// interface LivreCreationAttributes extends Optional<LivreAttributes,'id'> {}
+ interface LivreCreationAttributes extends Optional<LivreAttributes,'nombre_emprunts'> {}
 
-// Définir le modél de livre
-class Livre extends Model<LivreAttributes/*,LivreCreationAttributes*/> implements LivreAttributes {
+export class Livre extends Model<LivreAttributes,LivreCreationAttributes> implements LivreAttributes {
     public id!:string;
     public titre!: string;
     public auteur!: string;
     public sortie!: Date;
     public disponible!: string;
+    public nombre_emprunts!: number;
 }
 
-// Initialiser le modél Livre
 Livre.init(
     {
         id: {
@@ -46,6 +45,10 @@ Livre.init(
             type: DataTypes.STRING,
             allowNull: false
         },
+        nombre_emprunts: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
     },
     {
         sequelize,
@@ -53,5 +56,3 @@ Livre.init(
         timestamps: false,
     }
 )
-
-export default Livre

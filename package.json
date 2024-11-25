@@ -4,7 +4,8 @@
   "description": "Initialisation de redis avec node",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec ts-node ./src/main.ts"
+    "dev": "nodemon --exec ts-node ./src/server.ts",
+    "build": "npx tsc && node ./dist/server.js"
   },
   "author": "",
   "license": "ISC",
