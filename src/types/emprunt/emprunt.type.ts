@@ -1,6 +1,6 @@
 import { Model,DataTypes, Optional } from "sequelize";
-import { Livre } from "../livre/type.livre";
-import { Utilisateur } from "../utilisateur/type.utilisateur";
+import { Livre } from "../livre/livre.type";
+import { Utilisateur } from "../utilisateur/utilisateur.type";
 import { sequelize } from "../../DA/index";
 
 interface EmpruntAttributes {
@@ -13,7 +13,14 @@ interface EmpruntAttributes {
     updatedAt: Date,
 }
 
-interface EmpruntCreationOptional extends Optional<EmpruntAttributes,'createdAt' | 'updatedAt'>  {}
+export interface IEmprunt {
+    date_emprunt: Date,
+    date_retour: Date,
+    id_utilisateur: string,
+    id_livre: string,
+}
+
+export interface EmpruntCreationOptional extends Optional<EmpruntAttributes,'createdAt' | 'updatedAt'>  {}
 
 export class Emprunt extends Model<EmpruntAttributes,EmpruntCreationOptional> implements EmpruntAttributes {
     public id_emprunt!: string;

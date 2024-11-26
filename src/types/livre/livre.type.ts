@@ -1,7 +1,7 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import { sequelize } from "../../DA/index";
 
-interface LivreAttributes {
+export interface LivreAttributes {
     id: string,
     titre: string,
     auteur: string,

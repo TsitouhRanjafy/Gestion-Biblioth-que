@@ -3,7 +3,7 @@ import { UtilisateurService } from "../../service/index";
 import { Utilisateur } from "../../types/index";
 import { ReasonPhrases, StatusCodes } from "http-status-codes";
 
-export const  UtilisateurRouter = (router: Router, service: UtilisateurService) =>{
+export const  UtilisateurRouterGet = (router: Router, service: UtilisateurService) =>{
 
     router.get('/users', async (req: Request, res: Response) => {
         try {

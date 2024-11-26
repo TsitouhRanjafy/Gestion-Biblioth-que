@@ -3,9 +3,9 @@ import { Router , Response, Request } from "express";
 import { ReasonPhrases, StatusCodes } from "http-status-codes";
 
 
-export const LivreRouter = (router: Router, service: LivreService): void => {
+export const LivreRouterGet = (router: Router, service: LivreService): void => {
 
-    router.get('/livres', async (req: Request, res: Response) =>{
+    router.get('/books', async (req: Request, res: Response) =>{
         
         try {
             const data = await service.GetLivres();
@@ -15,7 +15,7 @@ export const LivreRouter = (router: Router, service: LivreService): void => {
         }
     })
 
-    router.get('/livre/:id', async (req: Request, res: Response) =>{
+    router.get('/book/:id', async (req: Request, res: Response) =>{
         
         const { id: id_livre } = req.params
         try {
@@ -32,7 +32,7 @@ export const LivreRouter = (router: Router, service: LivreService): void => {
         }
     })
 
-    router.get('/livres/top',async (req: Request, res: Response) => {
+    router.get('/books/top',async (req: Request, res: Response) => {
         try {
             const data = await service.GetTopLivres();
             res.status(StatusCodes.OK).send(data)

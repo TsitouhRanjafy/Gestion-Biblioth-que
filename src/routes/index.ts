@@ -1,7 +1,9 @@
-import { LivreRouter } from "./livre/livre.routes";
-import { UtilisateurRouter } from "./utilisateur/utilisateur.routes";
+import { LivreRouterGet } from "./livre/get.routes";
+import { UtilisateurRouterGet } from "./utilisateur/get.routes";
+import { EmpruntRouterPost } from "./emprunt/post.routes";
 
 export {
-    LivreRouter,
-    UtilisateurRouter
+    LivreRouterGet,
+    UtilisateurRouterGet,
+    EmpruntRouterPost
 }
