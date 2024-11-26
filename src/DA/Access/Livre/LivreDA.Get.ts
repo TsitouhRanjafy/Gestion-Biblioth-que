@@ -2,7 +2,7 @@ import { DBManager } from "../../DBManager";
 import { Identifier } from "sequelize";
 import { Livre } from "../../../types/index";
 import { sequelize } from "../../DBConnection/DBSync.mysql";
-import Emprunt from "../../../Models/emprunt.model";
+import { Emprunt } from "../../../types/index";
 
 
 export class LivreDAGet extends DBManager {

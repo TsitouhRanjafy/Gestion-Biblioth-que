@@ -1,10 +1,10 @@
 import express,{ Application } from "express";
 import dotenv from 'dotenv';
 
-import { LivreDAGet, syncDatabaseMysql } from "./DA/index";
+import { LivreDAGet, syncDatabaseMysql, UtilisateurDAGet } from "./DA/index";
 import { connectMongo } from "./DA/index";
-import { LivreRouter } from "./routes/index";
-import { LivreService } from "./service";
+import { LivreRouter , UtilisateurRouter} from "./routes/index";
+import { LivreService, UtilisateurService } from "./service";
 
 dotenv.config()
 
@@ -20,6 +20,7 @@ app.use('/',router)
 // routes.initialiser();
 
 LivreRouter(router,new LivreService(new LivreDAGet))
+UtilisateurRouter(router,new UtilisateurService(new UtilisateurDAGet))
 
 app.listen(port, () =>{
     try{

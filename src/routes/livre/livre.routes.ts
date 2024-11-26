@@ -5,7 +5,7 @@ import { ReasonPhrases, StatusCodes } from "http-status-codes";
 
 export const LivreRouter = (router: Router, service: LivreService): void => {
 
-    router.get('/', async (req: Request, res: Response) =>{
+    router.get('/livres', async (req: Request, res: Response) =>{
         
         try {
             const data = await service.GetLivres();
@@ -15,7 +15,7 @@ export const LivreRouter = (router: Router, service: LivreService): void => {
         }
     })
 
-    router.get('/:id', async (req: Request, res: Response) =>{
+    router.get('/livre/:id', async (req: Request, res: Response) =>{
         
         const { id: id_livre } = req.params
         try {
@@ -32,7 +32,7 @@ export const LivreRouter = (router: Router, service: LivreService): void => {
         }
     })
 
-    router.get('/top/trend',async (req: Request, res: Response) => {
+    router.get('/livres/top',async (req: Request, res: Response) => {
         try {
             const data = await service.GetTopLivres();
             res.status(StatusCodes.OK).send(data)

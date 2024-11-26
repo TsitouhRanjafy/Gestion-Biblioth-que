@@ -1,22 +1,7 @@
-import { ExpressYupMiddlewareInterface } from "express-yup-middleware";
-import * as Yup from "yup";
 import { Model,DataTypes, Optional } from "sequelize";
-import { Livre } from "../types/index";
-import Utilisateur from "./utilisateur.model";
-import { sequelize } from "../DA/index";
-
-
-export const empruntSchemaValidator : ExpressYupMiddlewareInterface = {
-    schema : {
-        body : {
-            yupSchema : Yup.object().shape({
-                id_utilisateur : Yup.string().min(6).max(15).required(),
-                date_emprunt : Yup.date().required(),
-                date_retour : Yup.date().required()
-            })
-        }
-    }
-}
+import { Livre } from "../livre/type.livre";
+import { Utilisateur } from "../utilisateur/type.utilisateur";
+import { sequelize } from "../../DA/index";
 
 interface EmpruntAttributes {
     id_emprunt: string,
@@ -30,7 +15,7 @@ interface EmpruntAttributes {
 
 interface EmpruntCreationOptional extends Optional<EmpruntAttributes,'createdAt' | 'updatedAt'>  {}
 
-class Emprunt extends Model<EmpruntAttributes,EmpruntCreationOptional> implements EmpruntAttributes {
+export class Emprunt extends Model<EmpruntAttributes,EmpruntCreationOptional> implements EmpruntAttributes {
     public id_emprunt!: string;
     public date_emprunt!: Date;
     public date_retour!: Date;
@@ -94,4 +79,3 @@ Emprunt.init(
 )
 Livre.hasMany(Emprunt,{ foreignKey: 'id_livre', as: 'allEmprunt' });
 Emprunt.belongsTo(Livre,{ foreignKey: 'id_livre', as: 'livreEmprunter' });
-export default Emprunt

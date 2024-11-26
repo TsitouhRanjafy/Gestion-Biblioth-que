@@ -1,6 +1,5 @@
 import { Identifier } from "sequelize";
 import { LivreDAGet } from "../../DA/index";
-import { Livre } from "../../types/index";
 
 export class LivreService {
     private livreDAGet : LivreDAGet;

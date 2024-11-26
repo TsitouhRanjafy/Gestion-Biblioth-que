@@ -1,5 +1,7 @@
-import { LivreService } from "./livre/livre.service";
+import { LivreService } from "./livre/get.service";
+import { UtilisateurService } from "./utilisateur/get.service";
 
 export {
-    LivreService
+    LivreService,
+    UtilisateurService
 }
