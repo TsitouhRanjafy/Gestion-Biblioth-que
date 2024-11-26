@@ -1,9 +1,14 @@
+import { QueryError } from "sequelize";
 import { IDBManager, Livre } from "../types/index";
 
 export class DBManager implements IDBManager{
-    ReadData(query: Livre[] ): Promise<any> {
-        return new Promise((resole,reject) =>{
-            return query;
-        })
+
+    public async ReadData(queryFunction: () => Promise<any>): Promise<any> {
+        try {
+            const data = await queryFunction();
+            return data;
+        } catch (error) {
+            return error
+        }
     }
 }
