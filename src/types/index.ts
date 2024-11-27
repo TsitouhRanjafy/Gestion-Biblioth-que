@@ -1,9 +1,11 @@
 import { IDBManager } from "./dbmanager/DBManager.type";
-import { Livre , LivreCreationAttributes , ILivre } from "./livre/livre.type";
+import { Livre , LivreCreationAttributes } from "./livre/livre.type";
 import { Utilisateur } from "./utilisateur/utilisateur.type";
-import { Emprunt, IEmprunt, EmpruntCreationOptional } from "./emprunt/emprunt.type";
+import { Emprunt, EmpruntCreationOptional } from "./emprunt/emprunt.type";
 import { Avis , IAvis } from "./avis/avis.type";
-import { filterEmprunt } from "./emprunt/type";
+import { triEmprunt, IEmprunt } from "./emprunt/type";
+import { ILivre } from "./livre/type";
+import { triMethodeLivre } from "./livre/type";
 
 export {
     IDBManager,
@@ -15,6 +17,7 @@ export {
     Avis,
     IAvis,
     LivreCreationAttributes,
-    filterEmprunt,
-    ILivre
+    triEmprunt,
+    ILivre,
+    triMethodeLivre
 }

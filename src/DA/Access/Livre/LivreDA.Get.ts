@@ -1,15 +1,45 @@
 import { DBManager } from "../../DBManager";
 import { Identifier } from "sequelize";
-import { Livre } from "../../../types/index";
+import { Livre, triMethodeLivre } from "../../../types/index";
 import { sequelize } from "../../DBConnection/DBSync.mysql";
 import { Emprunt } from "../../../types/index";
 
-
 export class LivreDAGet extends DBManager {
 
-    public async GetLivres(){
+    public async GetLivres(offset: number, limit: number,triMethode: triMethodeLivre | void){
         const deferredQuery = (): Promise<any> => {
-            return Livre.findAll();
+                switch (triMethode) {
+                    case triMethodeLivre.ASC_BY_DATEALPHABETIQUE:
+                        return Livre.findAll({
+                            order: [['titre','ASC']],
+                            limit: limit,
+                            offset: offset
+                        });
+                    case triMethodeLivre.ASC_BY_DATESORTIE:
+                        return Livre.findAll({
+                            order: [['sortie','ASC']],
+                            limit: limit,
+                            offset: offset
+                        });
+                    case triMethodeLivre.DESC_BY_DATESORTIE:
+                        return Livre.findAll({
+                            order: [['sortie','DESC']],
+                            limit: limit,
+                            offset: offset
+                        });
+                    case triMethodeLivre.DESC_BY_DATEALPHABETIQUE:
+                        return Livre.findAll({
+                            order: [['sortie','DESC']],
+                            limit: limit,
+                            offset: offset
+                        });
+                    default:
+                        return Livre.findAll({
+                            order: [['id','ASC']],
+                            limit: limit,
+                            offset: offset
+                        });
+                }
         }
         try {
             const data = await this.ReadData(deferredQuery);

@@ -1,7 +1,7 @@
 import { Router , Request , Response } from "express";
 import { EmpruntServiceGet } from "../../service/index";
 import { ReasonPhrases, StatusCodes } from "http-status-codes";
-import { filterEmprunt } from "../../types";
+import { triEmprunt } from "../../types";
 
 export const EmpruntRouterGet = (router: Router, service: EmpruntServiceGet) => {
 
@@ -16,7 +16,7 @@ export const EmpruntRouterGet = (router: Router, service: EmpruntServiceGet) => 
     });
 
     router.get('/emprunts/:filter',async (req: Request, res: Response) => {
-        const filter: filterEmprunt | any = req.params.filter;
+        const filter: triEmprunt | any = req.params.filter;
         try {
             const data = await service.GetAllEmprunt(parseInt(filter));
             res.status(StatusCodes.OK).send(data);

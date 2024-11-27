@@ -1,5 +1,6 @@
 import { Identifier } from "sequelize";
 import { LivreDAGet } from "../../DA/index";
+import { triMethodeLivre } from "../../types";
 
 export class LivreServiceGet {
     private livreDAGet : LivreDAGet;
@@ -8,10 +9,15 @@ export class LivreServiceGet {
         this.livreDAGet = livreDAGet;
     }
 
-    public async GetLivres(): Promise<any> {
+    public async GetLivres(offset: number,limit: number,triMethode: triMethodeLivre): Promise<any> {
         try {
-            const data = await this.livreDAGet.GetLivres()
-            return data
+            let data : Promise<any>;
+            if (triMethode){
+                data = await this.livreDAGet.GetLivres(offset,limit,triMethode)
+                return data;
+            }
+            data = await this.livreDAGet.GetLivres(offset,limit)
+            return data;
         } catch (error) {
             throw error
         }

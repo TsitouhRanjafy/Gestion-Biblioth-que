@@ -1,5 +1,5 @@
 import { DBManager } from "../../DBManager";
-import { Emprunt, filterEmprunt } from "../../../types/index";
+import { Emprunt, triEmprunt } from "../../../types/index";
 
 
 export class EmpruntDAGet extends DBManager {
@@ -20,22 +20,22 @@ export class EmpruntDAGet extends DBManager {
         }
     }
 
-    public async GetAllEmprunt(filter: filterEmprunt | any) {
+    public async GetAllEmprunt(tri: triEmprunt | any) {
         const deferredQuery = (): Promise<any> => {
-            switch (filter) {
-                case filterEmprunt.ASC_BY_DATEEMPRUNT:
+            switch (tri) {
+                case triEmprunt.ASC_BY_DATEEMPRUNT:
                     return Emprunt.findAll({
                         order: [['date_emprunt','ASC']]
                     });
-                case filterEmprunt.ASC_BY_DATERETOUR:
+                case triEmprunt.ASC_BY_DATERETOUR:
                     return Emprunt.findAll({
                         order: [['date_retour','ASC']]
                     });
-                case filterEmprunt.DESC_BY_DATEEMPRUNT:
+                case triEmprunt.DESC_BY_DATEEMPRUNT:
                     return Emprunt.findAll({
                         order: [['date_emprunt','DESC']]
                     });
-                case filterEmprunt.DESC_BY_DATERETOUR:
+                case triEmprunt.DESC_BY_DATERETOUR:
                     return Emprunt.findAll({
                         order: [['date_retour','DESC']]
                     });

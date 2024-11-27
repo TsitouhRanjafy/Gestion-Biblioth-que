@@ -13,13 +13,6 @@ interface EmpruntAttributes {
     updatedAt: Date,
 }
 
-export interface IEmprunt {
-    date_emprunt: Date,
-    date_retour: Date,
-    id_utilisateur: string,
-    id_livre: string,
-}
-
 export interface EmpruntCreationOptional extends Optional<EmpruntAttributes,'createdAt' | 'updatedAt'>  {}
 
 export class Emprunt extends Model<EmpruntAttributes,EmpruntCreationOptional> implements EmpruntAttributes {
