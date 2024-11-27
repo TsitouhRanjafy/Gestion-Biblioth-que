@@ -5,6 +5,7 @@ import { AvisServicePost } from "./avis/avisPost.service";
 import { LivreServiceDelete } from "./livre/livreDelete.service";
 import { EmpruntServiceGet } from "./emprunt/empruntGet.service";
 import { LivreServicePut } from "./livre/livrePut.service";
+import { LivreServicePost } from "./livre/livrePost.service";
 
 export {
     LivreServiceGet,
@@ -13,5 +14,6 @@ export {
     AvisServicePost,
     LivreServiceDelete,
     EmpruntServiceGet,
-    LivreServicePut
+    LivreServicePut,
+    LivreServicePost
 }

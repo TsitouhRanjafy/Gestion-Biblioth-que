@@ -10,6 +10,13 @@ interface LivreAttributes {
     nombre_emprunts: number
 }
 
+export interface ILivre {
+    titre: string,
+    auteur: string,
+    sortie: Date,
+    disponible: string
+}
+
 //  Certains attributs sont optionnels pour les nouveaux enregistrement
 export interface LivreCreationAttributes extends Optional<LivreAttributes,'nombre_emprunts'> {}
 
@@ -47,7 +54,8 @@ Livre.init(
         },
         nombre_emprunts: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            allowNull: true,
+            defaultValue: 0
         },
     },
     {

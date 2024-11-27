@@ -1,5 +1,5 @@
 import { IDBManager } from "./dbmanager/DBManager.type";
-import { Livre , LivreCreationAttributes } from "./livre/livre.type";
+import { Livre , LivreCreationAttributes , ILivre } from "./livre/livre.type";
 import { Utilisateur } from "./utilisateur/utilisateur.type";
 import { Emprunt, IEmprunt, EmpruntCreationOptional } from "./emprunt/emprunt.type";
 import { Avis , IAvis } from "./avis/avis.type";
@@ -15,5 +15,6 @@ export {
     Avis,
     IAvis,
     LivreCreationAttributes,
-    filterEmprunt
+    filterEmprunt,
+    ILivre
 }

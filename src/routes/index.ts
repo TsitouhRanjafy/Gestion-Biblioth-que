@@ -5,6 +5,7 @@ import { AvisRouterPost } from "./avis/avisPost.routes";
 import { LivreRouterDelete } from "./livre/livreDelete.routes";
 import { EmpruntRouterGet } from "./emprunt/empruntGet.routes";
 import { LivreRouterPut } from "./livre/livrePut.routes";
+import { LivreRouterPost } from "./livre/livrePost.routes";
 
 export {
     LivreRouterGet,
@@ -13,5 +14,6 @@ export {
     AvisRouterPost,
     LivreRouterDelete,
     EmpruntRouterGet,
-    LivreRouterPut
+    LivreRouterPut,
+    LivreRouterPost
 }

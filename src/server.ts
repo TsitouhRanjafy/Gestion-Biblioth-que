@@ -10,7 +10,8 @@ import {
     AvisDAPost,
     LivreDADelete,
     EmpruntDAGet,
-    LivreDAPut
+    LivreDAPut,
+    LivreDAPost
 } from "./DA/index";
 import { 
     LivreRouterGet , 
@@ -19,7 +20,8 @@ import {
     AvisRouterPost,
     LivreRouterDelete,
     EmpruntRouterGet,
-    LivreRouterPut
+    LivreRouterPut,
+    LivreRouterPost
 } from "./routes/index";
 import { 
     AvisServicePost, 
@@ -28,7 +30,8 @@ import {
     UtilisateurServiceGet,
     LivreServiceDelete,
     EmpruntServiceGet,
-    LivreServicePut
+    LivreServicePut,
+    LivreServicePost
 } from "./service";
 
 dotenv.config()
@@ -51,6 +54,7 @@ AvisRouterPost(router,new AvisServicePost(new AvisDAPost))
 LivreRouterDelete(router,new LivreServiceDelete(new LivreDADelete,new EmpruntDAGet,new LivreDAGet))
 EmpruntRouterGet(router,new EmpruntServiceGet(new EmpruntDAGet));
 LivreRouterPut(router,new LivreServicePut(new LivreDAPut))
+LivreRouterPost(router,new LivreServicePost(new LivreDAPost))
 
 app.listen(port, () =>{
     try{

@@ -5,7 +5,7 @@ import { ReasonPhrases, StatusCodes } from "http-status-codes";
 
 export const EmpruntRouterPost = (router: Router, service: EmpruntServicePost) => {
 
-    router.post('/emprunt/:idLivre/:idUtilisateur', async (req: Request, res: Response) => {
+    router.post('/new/emprunt/:idLivre/:idUtilisateur', async (req: Request, res: Response) => {
         const { 
             idLivre: id_livre, 
             idUtilisateur: id_utilisateur 
