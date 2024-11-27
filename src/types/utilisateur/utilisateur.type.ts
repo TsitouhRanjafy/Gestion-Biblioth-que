@@ -66,5 +66,6 @@ Utilisateur.init(
     {
         sequelize,
         tableName: 'utilisateurs',
+        paranoid: true,
     }
 )

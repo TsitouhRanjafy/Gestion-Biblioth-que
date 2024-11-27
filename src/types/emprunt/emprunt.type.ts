@@ -81,7 +81,8 @@ Emprunt.init(
     {
         sequelize,
         tableName: 'emprunts',
-        timestamps: true
+        timestamps: true,
+        paranoid: true,
     }
 )
 Livre.hasMany(Emprunt,{ foreignKey: 'id_livre', as: 'allEmprunt' });
