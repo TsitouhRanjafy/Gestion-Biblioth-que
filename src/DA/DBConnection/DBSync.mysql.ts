@@ -9,8 +9,8 @@ export const sequelize : Sequelize = new Sequelize(process.env.MYSQL_DATABASE ||
 export const syncDatabaseMysql = async () =>{
     try {
         await sequelize.sync({ alter: true })
-        console.log('La base de données mysql a été synchronisée ');
+        console.error('DataBase Mysql Synchronised Successfully ');
     } catch (error) {
-        console.error('Erreur de synchronisation de la base de donnée mysql',error)
+        console.error('Error of Synchronization DataBase Mysql:',error)
     }
 }

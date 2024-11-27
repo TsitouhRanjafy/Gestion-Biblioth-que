@@ -7,9 +7,9 @@ const URL = process.env.MONGODB_URL || 'mongodb://127.0.0.1:27017/bibliotheque'
 export const connectMongo = async () =>{
     try {
         await mongoose.connect(URL)
-        console.log("connection mongoDB ok");
+        console.error("DataBase MongoDB Connected");
     } catch (error) {
-        console.log('connection mongoDB échoue:',error);
+        console.error('Error of Connection DataBase MongoDB:',error);
         throw error
     }
 }
