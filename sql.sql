@@ -456,3 +456,6 @@ ORDER BY nombre_emprunts DESC
     group: ['Livres.id'],
     order: [[sequelize.literal('nombre_emprunts'), 'DESC']]
 }); */
+
+SELECT * FROM emprunts
+WHERE id_livre="57495"

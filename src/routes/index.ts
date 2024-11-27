@@ -2,10 +2,14 @@ import { LivreRouterGet } from "./livre/livreGet.routes";
 import { UtilisateurRouterGet } from "./utilisateur/utilisateurGet.routes";
 import { EmpruntRouterPost } from "./emprunt/empruntPost.routes";
 import { AvisRouterPost } from "./avis/avisPost.routes";
+import { LivreRouterDelete } from "./livre/livreDelete.routes";
+import { EmpruntRouterGet } from "./emprunt/empruntGet.routes";
 
 export {
     LivreRouterGet,
     UtilisateurRouterGet,
     EmpruntRouterPost,
-    AvisRouterPost
+    AvisRouterPost,
+    LivreRouterDelete,
+    EmpruntRouterGet
 }

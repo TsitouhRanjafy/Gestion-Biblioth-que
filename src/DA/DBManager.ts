@@ -1,4 +1,3 @@
-import { Identifier } from "sequelize";
 import { IDBManager } from "../types/index";
 
 export class DBManager implements IDBManager{
@@ -21,7 +20,12 @@ export class DBManager implements IDBManager{
         }
     }
 
-    public DeleteData(identifiant: Identifier | string): Promise<any> {
-        throw new Error("Method not implemented.");
+    public async DeleteData(queryFunction: () => Promise<any>): Promise<any> {
+        try {
+            const result = await queryFunction();
+            return result;
+        } catch(error) {
+            throw error
+        }
     }
 }
