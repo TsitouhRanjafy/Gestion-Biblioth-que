@@ -1,9 +1,11 @@
-import { LivreService } from "./livre/get.service";
-import { UtilisateurService } from "./utilisateur/get.service";
-import { EmpruntServicePost } from "./emprunt/post.service";
+import { LivreServiceGet } from "./livre/livreGet.service";
+import { UtilisateurServiceGet } from "./utilisateur/utilisateurGet.service";
+import { EmpruntServicePost } from "./emprunt/empruntPost.service";
+import { AvisServicePost } from "./avis/avisPost.service";
 
 export {
-    LivreService,
-    UtilisateurService,
-    EmpruntServicePost
+    LivreServiceGet,
+    UtilisateurServiceGet,
+    EmpruntServicePost,
+    AvisServicePost
 }

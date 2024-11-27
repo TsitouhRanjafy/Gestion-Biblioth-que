@@ -27,7 +27,6 @@ export const EmpruntRouterPost = (router: Router, service: EmpruntServicePost) =
         } catch (error) {
             res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
                 "status" : ReasonPhrases.INTERNAL_SERVER_ERROR,
-                "error": error
             })
         }
     })

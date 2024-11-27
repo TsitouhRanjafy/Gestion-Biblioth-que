@@ -1,7 +1,7 @@
 import { Identifier } from "sequelize";
 import { LivreDAGet } from "../../DA/index";
 
-export class LivreService {
+export class LivreServiceGet {
     private livreDAGet : LivreDAGet;
 
     constructor(livreDAGet : LivreDAGet){

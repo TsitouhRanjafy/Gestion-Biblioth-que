@@ -1,6 +1,6 @@
 import { Document, Schema, model } from "mongoose";
 
-export interface IAvis extends Document {
+interface IAvi extends Document {
     id_livre : string,
     id_utilisateur : string,
     note : number,
@@ -8,7 +8,15 @@ export interface IAvis extends Document {
     datetime : Date
 }
 
-const avisSchema = new Schema<IAvis>({
+export interface IAvis {
+    id_livre : string,
+    id_utilisateur : string,
+    note : number,
+    commentaire : string,
+    datetime : Date
+}
+
+const avisSchema = new Schema<IAvi>({
     id_livre: { type : String, required : true },
     id_utilisateur : {type : String, required : true },
     note : { type : Number },
@@ -16,6 +24,6 @@ const avisSchema = new Schema<IAvis>({
     datetime : { type : Date, required : true }
 })
 
-export const Avis = model<IAvis>('avis',avisSchema)
+export const Avis = model<IAvi>('avis',avisSchema)
 
 

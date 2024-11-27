@@ -1,9 +1,8 @@
 import { Router, Request, Response } from "express";
-import { UtilisateurService } from "../../service/index";
-import { Utilisateur } from "../../types/index";
+import { UtilisateurServiceGet } from "../../service/index";
 import { ReasonPhrases, StatusCodes } from "http-status-codes";
 
-export const  UtilisateurRouterGet = (router: Router, service: UtilisateurService) =>{
+export const  UtilisateurRouterGet = (router: Router, service: UtilisateurServiceGet) =>{
 
     router.get('/users', async (req: Request, res: Response) => {
         try {
@@ -28,8 +27,7 @@ export const  UtilisateurRouterGet = (router: Router, service: UtilisateurServic
             }
         } catch (error) {
             res.status(StatusCodes.BAD_REQUEST).json({ 
-                "status": ReasonPhrases.BAD_REQUEST,
-                "error" : error
+                "status": ReasonPhrases.BAD_REQUEST
             })
         }
     })

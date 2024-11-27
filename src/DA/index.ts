@@ -3,6 +3,7 @@ import { syncDatabaseMysql , sequelize } from "./DBConnection/DBSync.mysql";
 import { LivreDAGet } from "./Access/Livre/LivreDA.Get";
 import { UtilisateurDAGet } from "./Access/Utilisateur/utilisateurDA.Get";
 import { EmpruntDAPost } from "./Access/Emprunt/empruntDA.Post";
+import { AvisDAPost } from "./Access/Avis/avisDA.Post";
 
 
 export {
@@ -11,5 +12,6 @@ export {
     sequelize,
     LivreDAGet,
     UtilisateurDAGet,
-    EmpruntDAPost
+    EmpruntDAPost,
+    AvisDAPost
 }

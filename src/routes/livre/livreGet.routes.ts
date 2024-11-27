@@ -1,9 +1,9 @@
-import { LivreService } from "../../service/index";
+import { LivreServiceGet } from "../../service/index";
 import { Router , Response, Request } from "express";
 import { ReasonPhrases, StatusCodes } from "http-status-codes";
 
 
-export const LivreRouterGet = (router: Router, service: LivreService): void => {
+export const LivreRouterGet = (router: Router, service: LivreServiceGet): void => {
 
     router.get('/books', async (req: Request, res: Response) =>{
         

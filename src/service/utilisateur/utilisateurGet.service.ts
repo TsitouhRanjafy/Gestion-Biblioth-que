@@ -2,7 +2,7 @@ import { Identifier } from "sequelize";
 import { UtilisateurDAGet } from "../../DA/index";
 
 
-export class UtilisateurService {
+export class UtilisateurServiceGet {
     private utilisateurDAGet: UtilisateurDAGet;
 
     constructor(utilisateurDAGet: UtilisateurDAGet){

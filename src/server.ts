@@ -1,11 +1,9 @@
 import express,{ Application } from "express";
 import dotenv from 'dotenv';
 
-import { EmpruntDAPost, LivreDAGet, syncDatabaseMysql, UtilisateurDAGet } from "./DA/index";
-import { connectMongo } from "./DA/index";
-import { LivreRouterGet , UtilisateurRouterGet} from "./routes/index";
-import { EmpruntServicePost, LivreService, UtilisateurService } from "./service";
-import { EmpruntRouterPost } from "./routes/index";
+import { EmpruntDAPost, LivreDAGet, syncDatabaseMysql, UtilisateurDAGet , connectMongo, AvisDAPost } from "./DA/index";
+import { LivreRouterGet , UtilisateurRouterGet , EmpruntRouterPost , AvisRouterPost } from "./routes/index";
+import { AvisServicePost, EmpruntServicePost, LivreServiceGet, UtilisateurServiceGet } from "./service";
 
 dotenv.config()
 
@@ -20,9 +18,10 @@ app.use('/',router)
 // const routes : Route = new Route(app)
 // routes.initialiser();
 
-LivreRouterGet(router,new LivreService(new LivreDAGet))
-UtilisateurRouterGet(router,new UtilisateurService(new UtilisateurDAGet))
+LivreRouterGet(router,new LivreServiceGet(new LivreDAGet))
+UtilisateurRouterGet(router,new UtilisateurServiceGet(new UtilisateurDAGet))
 EmpruntRouterPost(router,new EmpruntServicePost(new EmpruntDAPost,new UtilisateurDAGet,new LivreDAGet))
+AvisRouterPost(router,new AvisServicePost(new AvisDAPost))
 
 app.listen(port, () =>{
     try{
