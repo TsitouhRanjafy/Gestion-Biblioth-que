@@ -1,7 +1,7 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import { sequelize } from "../../DA/index";
 
-export interface LivreAttributes {
+interface LivreAttributes {
     id: string,
     titre: string,
     auteur: string,
@@ -11,7 +11,7 @@ export interface LivreAttributes {
 }
 
 //  Certains attributs sont optionnels pour les nouveaux enregistrement
-interface LivreCreationAttributes extends Optional<LivreAttributes,'nombre_emprunts'> {}
+export interface LivreCreationAttributes extends Optional<LivreAttributes,'nombre_emprunts'> {}
 
 export class Livre extends Model<LivreAttributes,LivreCreationAttributes> implements LivreAttributes {
     public id!:string;

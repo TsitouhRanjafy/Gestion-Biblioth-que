@@ -1,0 +1,6 @@
+export enum filterEmprunt {
+    ASC_BY_DATEEMPRUNT,
+    ASC_BY_DATERETOUR,
+    DESC_BY_DATEEMPRUNT,
+    DESC_BY_DATERETOUR,
+}

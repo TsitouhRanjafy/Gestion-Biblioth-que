@@ -1,13 +1,14 @@
-import { LivreDADelete } from "../../DA/index";
+import { ReasonPhrases, StatusCodes } from "http-status-codes";
+import { EmpruntDAGet, LivreDADelete, LivreDAGet } from "../../DA/index";
 
 
 export class LivreServiceDelete {
-    constructor(private livreDADelete: LivreDADelete){};
+    constructor(private livreDADelete: LivreDADelete,private empruntDAGet: EmpruntDAGet,private livreDAGet: LivreDAGet){};
 
     public async DeleteLivreById(Id: string) {
         try {
-            const result = await this.livreDADelete.DeleteDataById(Id)
-            return result;
+            
+            
         } catch(error) {
             throw error
         }

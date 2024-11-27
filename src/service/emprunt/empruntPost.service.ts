@@ -27,7 +27,7 @@ export class EmpruntServicePost {
         try {
             const utilisateur = await this.utilisateurDAGet.GetUtilisateurById(newData.id_utilisateur);
             const livre = await this.livreDAGet.GetLivresById(newData.id_livre)
-            if (!utilisateur || !livre){
+            if (!utilisateur || !livre || livre.disponible=="non"){
                 return
             }
             const result = await this.empruntDAPost.NewEmprunt(newData)

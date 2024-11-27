@@ -459,3 +459,6 @@ ORDER BY nombre_emprunts DESC
 
 SELECT * FROM emprunts
 WHERE id_livre="57495"
+
+SELECT * FROM emprunts
+ORDER BY date_emprunt DESC;

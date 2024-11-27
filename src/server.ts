@@ -9,7 +9,8 @@ import {
     connectMongo, 
     AvisDAPost,
     LivreDADelete,
-    EmpruntDAGet
+    EmpruntDAGet,
+    LivreDAPut
 } from "./DA/index";
 import { 
     LivreRouterGet , 
@@ -17,7 +18,8 @@ import {
     EmpruntRouterPost , 
     AvisRouterPost,
     LivreRouterDelete,
-    EmpruntRouterGet
+    EmpruntRouterGet,
+    LivreRouterPut
 } from "./routes/index";
 import { 
     AvisServicePost, 
@@ -25,7 +27,8 @@ import {
     LivreServiceGet, 
     UtilisateurServiceGet,
     LivreServiceDelete,
-    EmpruntServiceGet
+    EmpruntServiceGet,
+    LivreServicePut
 } from "./service";
 
 dotenv.config()
@@ -45,8 +48,9 @@ LivreRouterGet(router,new LivreServiceGet(new LivreDAGet))
 UtilisateurRouterGet(router,new UtilisateurServiceGet(new UtilisateurDAGet))
 EmpruntRouterPost(router,new EmpruntServicePost(new EmpruntDAPost,new UtilisateurDAGet,new LivreDAGet))
 AvisRouterPost(router,new AvisServicePost(new AvisDAPost))
-LivreRouterDelete(router,new LivreServiceDelete(new LivreDADelete))
-EmpruntRouterGet(router,new EmpruntServiceGet(new EmpruntDAGet))
+LivreRouterDelete(router,new LivreServiceDelete(new LivreDADelete,new EmpruntDAGet,new LivreDAGet))
+EmpruntRouterGet(router,new EmpruntServiceGet(new EmpruntDAGet));
+LivreRouterPut(router,new LivreServicePut(new LivreDAPut))
 
 app.listen(port, () =>{
     try{

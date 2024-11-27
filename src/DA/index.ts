@@ -6,6 +6,7 @@ import { EmpruntDAPost } from "./Access/Emprunt/empruntDA.Post";
 import { AvisDAPost } from "./Access/Avis/avisDA.Post";
 import { LivreDADelete } from "./Access/Livre/LivreDA.Delete";
 import { EmpruntDAGet } from "./Access/Emprunt/empruntDA.Get";
+import { LivreDAPut } from "./Access/Livre/LivreDA.Put";
 
 
 export {
@@ -17,5 +18,6 @@ export {
     EmpruntDAPost,
     AvisDAPost,
     LivreDADelete,
-    EmpruntDAGet
+    EmpruntDAGet,
+    LivreDAPut
 }
