@@ -14,7 +14,8 @@ import {
     LivreDAPost,
     CacheDataDASet,
     CacheDataDAGet,
-    DACache
+    DACache,
+    EmpruntDADelete,
 } from "./DA/index";
 import { 
     LivreRouterGet , 
@@ -25,7 +26,8 @@ import {
     EmpruntRouterGet,
     LivreRouterPut,
     LivreRouterPost,
-    InitRouterGet
+    InitRouterGet,
+    EmpruntRouterDelete,
 } from "./routes/index";
 import { 
     AvisServicePost, 
@@ -38,6 +40,7 @@ import {
     LivreServicePost,
     CacheService,
     InitServiceGet,
+    EmpruntServiceDelete
 } from "./service/index";
 
 dotenv.config()
@@ -62,7 +65,7 @@ EmpruntRouterGet(router,new EmpruntServiceGet(new EmpruntDAGet));
 LivreRouterPut(router,new LivreServicePut(new LivreDAPut))
 LivreRouterPost(router,new LivreServicePost(new LivreDAPost,new CacheService(new CacheDataDASet,new CacheDataDAGet,new LivreDAGet,new DACache)));
 InitRouterGet(router,new InitServiceGet(new CacheService(new CacheDataDASet,new CacheDataDAGet,new LivreDAGet,new DACache)));
-
+EmpruntRouterDelete(router,new EmpruntServiceDelete(new EmpruntDADelete,new LivreServicePut(new LivreDAPut),new EmpruntDAGet,new EmpruntDAPost));
 
 app.listen(port, async () =>{
     const cacheService = new CacheService(new CacheDataDASet,new CacheDataDAGet,new LivreDAGet,new DACache);

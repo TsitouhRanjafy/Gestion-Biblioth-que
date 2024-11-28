@@ -1,13 +1,12 @@
 import { DBManager } from "../../DBManager";
-import { Emprunt, EmpruntCreationOptional } from "../../../types/index";
+import { Emprunt, EmpruntCreationOptional,EmpruntHistorique, IEmpruntHistoriques } from "../../../types/index";
 
 
 export class EmpruntDAPost extends DBManager {
 
     public async NewEmprunt(DataEmprunt: EmpruntCreationOptional) {
-        const data = DataEmprunt;
         const deferredQuery = (): Promise<any> => {
-            return Emprunt.create(data)
+            return Emprunt.create(DataEmprunt)
         }
         try {
             const result = await this.InsertData(deferredQuery)
@@ -16,4 +15,18 @@ export class EmpruntDAPost extends DBManager {
             throw error
         }
     }
+
+    public async NewEmpruntHistorique(DataEmprunt: IEmpruntHistoriques) {
+        const newEprtHistorique = new EmpruntHistorique(DataEmprunt);
+        const deferredQuery = (): Promise<any> => {
+            return newEprtHistorique.save();
+        }
+        try {
+            const result = await this.InsertData(deferredQuery);
+            return result;
+        } catch (error) {
+            console.error(" Error DA Emprunt Post",error)
+        }
+    }
+
 }                                                                                                                   

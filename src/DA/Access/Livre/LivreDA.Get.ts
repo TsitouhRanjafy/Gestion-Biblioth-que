@@ -1,5 +1,4 @@
 import { DBManager } from "../../DBManager";
-import { Identifier } from "sequelize";
 import { Livre, triMethodeLivre } from "../../../types/index";
 import { sequelize } from "../../DBConnection/DBSync.mysql";
 import { Emprunt } from "../../../types/index";
@@ -49,7 +48,7 @@ export class LivreDAGet extends DBManager {
         }
     }
 
-    public async GetLivresById(id: Identifier){
+    public async GetLivresById(id: string){
         const deferredQuery = (): Promise<any> => {
             return Livre.findByPk(id);
         }

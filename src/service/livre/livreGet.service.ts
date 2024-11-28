@@ -52,7 +52,7 @@ export class LivreServiceGet {
         }
     }
 
-    public async GetLivreById(id: Identifier): Promise<any> {
+    public async GetLivreById(id: string): Promise<any> {
         try {
             const data = await this.livreDAGet.GetLivresById(id);
             return data;

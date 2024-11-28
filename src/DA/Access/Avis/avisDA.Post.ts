@@ -12,7 +12,7 @@ export class AvisDAPost extends DBManager {
             const result = await this.InsertData(deferredQuery);
             return result;
         } catch (error) {
-            throw error
+            console.error(" Error DA Avis Post ")
         }
     }
 }

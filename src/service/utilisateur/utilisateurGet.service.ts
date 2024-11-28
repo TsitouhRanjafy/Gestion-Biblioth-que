@@ -1,6 +1,4 @@
-import { Identifier } from "sequelize";
 import { UtilisateurDAGet } from "../../DA/index";
-
 
 export class UtilisateurServiceGet {
     private utilisateurDAGet: UtilisateurDAGet;
@@ -18,7 +16,7 @@ export class UtilisateurServiceGet {
         }
     }
 
-    public async GetUtilisateurById(id: Identifier) {
+    public async GetUtilisateurById(id: string) {
         try {
             const data = await this.utilisateurDAGet.GetUtilisateurById(id)
             return data;

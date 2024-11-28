@@ -6,6 +6,7 @@ import { Avis , IAvis } from "./avis/avis.type";
 import { triEmprunt, IEmprunt } from "./emprunt/type";
 import { ILivre } from "./livre/type";
 import { triMethodeLivre } from "./livre/type";
+import { EmpruntHistorique , IEmpruntHistoriques } from "./emprunt/empruntHistorique.type";
 
 export {
     IDBManager,
@@ -19,5 +20,7 @@ export {
     LivreCreationAttributes,
     triEmprunt,
     ILivre,
-    triMethodeLivre
+    triMethodeLivre,
+    EmpruntHistorique,
+    IEmpruntHistoriques
 }

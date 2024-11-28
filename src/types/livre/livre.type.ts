@@ -7,12 +7,12 @@ interface LivreAttributes {
     auteur: string,
     sortie: Date,
     disponible: string,
-    nombre_emprunts: number
+    nombre_emprunts: number,
+    createdAt: Date,
+    updatedAt: Date
 }
 
-
-//  Certains attributs sont optionnels pour les nouveaux enregistrement
-export interface LivreCreationAttributes extends Optional<LivreAttributes,'nombre_emprunts'> {}
+export interface LivreCreationAttributes extends Optional<LivreAttributes,'nombre_emprunts' | 'createdAt' | 'updatedAt'> {}
 
 export class Livre extends Model<LivreAttributes,LivreCreationAttributes> implements LivreAttributes {
     public id!:string;
@@ -21,6 +21,8 @@ export class Livre extends Model<LivreAttributes,LivreCreationAttributes> implem
     public sortie!: Date;
     public disponible!: string;
     public nombre_emprunts!: number;
+    public createdAt!: Date;
+    public updatedAt!: Date;
 }
 
 Livre.init(
@@ -51,11 +53,21 @@ Livre.init(
             allowNull: true,
             defaultValue: 0
         },
+        createdAt: {
+            type: DataTypes.DATE,
+            allowNull: true,
+            defaultValue: DataTypes.NOW
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: true,
+            defaultValue: DataTypes.NOW
+        }, 
     },
     {
         sequelize,
         tableName: 'livres',
-        timestamps: false,
+        timestamps: true,
         paranoid: true
     }
 )

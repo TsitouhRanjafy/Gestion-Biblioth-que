@@ -6,8 +6,8 @@ export interface IEmprunt {
 }
 
 export enum triEmprunt {
-    ASC_BY_DATEEMPRUNT,
-    ASC_BY_DATERETOUR,
-    DESC_BY_DATEEMPRUNT,
-    DESC_BY_DATERETOUR,
+    ASC_BY_DATEEMPRUNT=1,
+    ASC_BY_DATERETOUR=2,
+    DESC_BY_DATEEMPRUNT=3,
+    DESC_BY_DATERETOUR=4,
 }

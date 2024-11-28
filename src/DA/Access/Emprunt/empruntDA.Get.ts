@@ -4,6 +4,21 @@ import { Emprunt, triEmprunt } from "../../../types/index";
 
 export class EmpruntDAGet extends DBManager {
 
+    public async GetEmpruntById(Id: string) {
+        const deferredQuery = (): Promise<any> => {
+            return Emprunt.findAll({
+                where: {
+                    id_emprunt: Id
+                }
+            })
+        }
+        try {
+            const data = await this.ReadData(deferredQuery);
+            return data;
+        } catch (error) {
+            console.error(" Error DA Emprunt Get ");
+        }
+    }
     public async GetEmpruntLivreById(Id: string) {
         const deferredQuery = (): Promise<any> => {
             return Emprunt.findOne({

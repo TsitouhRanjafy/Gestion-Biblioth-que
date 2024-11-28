@@ -8,6 +8,8 @@ import { LivreServicePut } from "./livre/livrePut.service";
 import { LivreServicePost } from "./livre/livrePost.service";
 import { CacheService } from "./cache/cache.service"; 
 import { InitServiceGet } from "./init/initGet.service";
+import { EmpruntServiceDelete } from "./emprunt/empruntDelete.service";
+
 
 export {
     LivreServiceGet,
@@ -19,5 +21,6 @@ export {
     LivreServicePut,
     LivreServicePost,
     CacheService,
-    InitServiceGet
+    InitServiceGet,
+    EmpruntServiceDelete
 }

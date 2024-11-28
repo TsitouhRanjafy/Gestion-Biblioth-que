@@ -1,4 +1,3 @@
-import { Identifier } from "sequelize";
 import { Utilisateur } from "../../../types/index";
 import { DBManager } from "../../DBManager";
 
@@ -17,7 +16,7 @@ export class UtilisateurDAGet extends DBManager {
         }
     }
 
-    public async GetUtilisateurById(id: Identifier) {
+    public async GetUtilisateurById(id: string) {
         const deferredQuery = (): Promise<any> => {
             return Utilisateur.findByPk(id);
         }
