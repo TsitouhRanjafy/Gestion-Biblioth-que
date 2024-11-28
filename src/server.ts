@@ -23,7 +23,8 @@ import {
     LivreRouterDelete,
     EmpruntRouterGet,
     LivreRouterPut,
-    LivreRouterPost
+    LivreRouterPost,
+    InitRouterGet
 } from "./routes/index";
 import { 
     AvisServicePost, 
@@ -35,7 +36,7 @@ import {
     LivreServicePut,
     LivreServicePost,
     CacheService,
-
+    InitServiceGet,
 } from "./service/index";
 
 dotenv.config()
@@ -51,18 +52,19 @@ app.use('/',router)
 // const routes : Route = new Route(app)
 // routes.initialiser();
 
-LivreRouterGet(router,new LivreServiceGet(new LivreDAGet,new CacheService(new CacheDataDASet,new LivreDAGet)))
+LivreRouterGet(router,new LivreServiceGet(new LivreDAGet,new CacheService(new CacheDataDASet,new CacheDataDAGet,new LivreDAGet)))
 UtilisateurRouterGet(router,new UtilisateurServiceGet(new UtilisateurDAGet))
 EmpruntRouterPost(router,new EmpruntServicePost(new EmpruntDAPost,new UtilisateurDAGet,new LivreDAGet))
 AvisRouterPost(router,new AvisServicePost(new AvisDAPost))
 LivreRouterDelete(router,new LivreServiceDelete(new LivreDADelete,new EmpruntDAGet,new LivreDAGet))
 EmpruntRouterGet(router,new EmpruntServiceGet(new EmpruntDAGet));
 LivreRouterPut(router,new LivreServicePut(new LivreDAPut))
-LivreRouterPost(router,new LivreServicePost(new LivreDAPost))
+LivreRouterPost(router,new LivreServicePost(new LivreDAPost));
+InitRouterGet(router,new InitServiceGet(new CacheService(new CacheDataDASet,new CacheDataDAGet,new LivreDAGet)));
 
 
 app.listen(port, async () =>{
-    const cacheService = new CacheService(new CacheDataDASet,new LivreDAGet);
+    const cacheService = new CacheService(new CacheDataDASet,new CacheDataDAGet,new LivreDAGet);
     try{
         console.log(`server running on port ${port}`);
         syncDatabaseMysql();

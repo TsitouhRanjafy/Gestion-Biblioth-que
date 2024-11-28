@@ -6,6 +6,7 @@ import { LivreRouterDelete } from "./livre/livreDelete.routes";
 import { EmpruntRouterGet } from "./emprunt/empruntGet.routes";
 import { LivreRouterPut } from "./livre/livrePut.routes";
 import { LivreRouterPost } from "./livre/livrePost.routes";
+import { InitRouterGet } from "./init/initGet.routes";
 
 export {
     LivreRouterGet,
@@ -15,5 +16,6 @@ export {
     LivreRouterDelete,
     EmpruntRouterGet,
     LivreRouterPut,
-    LivreRouterPost
+    LivreRouterPost,
+    InitRouterGet
 }

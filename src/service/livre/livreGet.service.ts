@@ -15,6 +15,7 @@ export class LivreServiceGet {
     public async GetLivres(offset: number,limit: number,triMethode: triMethodeLivre): Promise<any> {
         try {
             let data : Promise<any>;
+            
             if(offset<0 || limit<0){
                 return;
             }
