@@ -1,7 +1,12 @@
-import { CacheDataDAGet, CacheDataDASet, LivreDAGet } from "../../DA";
+import { CacheDataDAGet, CacheDataDASet, DACache, LivreDAGet } from "../../DA";
 
 export class CacheService {
-    constructor(private cacheDASet: CacheDataDASet,private cacheDAGet: CacheDataDAGet,private livreDAGet: LivreDAGet){}
+    constructor(
+        private cacheDASet: CacheDataDASet,
+        private cacheDAGet: CacheDataDAGet,
+        private livreDAGet: LivreDAGet,
+        private cacheDADelete: DACache
+    ){}
 
     public async CacheNombreToutLivre(cle: string){
         try {
@@ -9,7 +14,7 @@ export class CacheService {
             const result = this.cacheDASet.CacheSimpleData(cle,JSON.stringify(nombreToutLivre));
             return result;
         } catch (error) {
-            console.error(" Error Cache Service ",error)
+            console.error(" Error Service Cache ",error)
         }
     }
 
@@ -20,6 +25,15 @@ export class CacheService {
             return parseInt(JSON.parse(nombreToutLivre)[0].nombreToutLivre);
         } catch (error) {
             console.error(" Error Cache Service getNombreToutLivre ",error)
+        }
+    }
+
+    public async reinitialiseCache(){
+        try {
+            await this.cacheDADelete.RestoreCache();
+            await this.CacheNombreToutLivre("nombreToutLivre");
+        } catch (error) {
+            console.error(" Error Service Cache ",error)
         }
     }
 }

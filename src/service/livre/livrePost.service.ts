@@ -6,8 +6,8 @@ import { CacheService } from "../cache/cache.service";
 export class LivreServicePost {
     constructor(
         private livreDAPost: LivreDAPost,
-        private cacheService: CacheService,
-        private dACache: DACache ){}
+        private cacheService: CacheService
+    ){}
 
     public async NewLivre(newPartialData: Required<ILivre>) {
         try {
@@ -21,8 +21,7 @@ export class LivreServicePost {
             }
             const data = await this.livreDAPost.NewLivre(newData)
             if (!data) return
-            await this.dACache.RestoreCache();
-            await this.cacheService.CacheNombreToutLivre("nombreToutLivre");
+            await this.cacheService.reinitialiseCache();
             return data;
         } catch (error) {
             console.error(" Service Livre Post Error ",error)

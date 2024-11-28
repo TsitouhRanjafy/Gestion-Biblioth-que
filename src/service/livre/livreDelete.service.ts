@@ -1,16 +1,25 @@
-import { ReasonPhrases, StatusCodes } from "http-status-codes";
-import { EmpruntDAGet, LivreDADelete, LivreDAGet } from "../../DA/index";
+import { DACache, LivreDADelete, LivreDAGet } from "../../DA/index";
+import { CacheService } from "../cache/cache.service";
 
 
 export class LivreServiceDelete {
-    constructor(private livreDADelete: LivreDADelete,private empruntDAGet: EmpruntDAGet,private livreDAGet: LivreDAGet){};
+    constructor(
+        private livreDADelete: LivreDADelete,
+        private cacheService: CacheService,
+        private livreDAGet: LivreDAGet
+    ){};
 
     public async DeleteLivreById(Id: string) {
         try {
-            
-            
+            const data = await this.livreDAGet.GetLivresById(Id);
+            const disponible = data.disponible;
+            if (disponible == "oui"){
+                const result = await this.livreDADelete.DeleteLivreById(Id);
+                await this.cacheService.reinitialiseCache();
+                return result;
+            }
         } catch(error) {
-            throw error
+            console.error(" Error Service Livre Delete ",error)
         }
     }
 

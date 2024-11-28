@@ -53,19 +53,19 @@ app.use('/',router)
 // const routes : Route = new Route(app)
 // routes.initialiser();
 
-LivreRouterGet(router,new LivreServiceGet(new LivreDAGet,new CacheDataDASet,new CacheDataDAGet,new CacheService(new CacheDataDASet,new CacheDataDAGet,new LivreDAGet)))
+LivreRouterGet(router,new LivreServiceGet(new LivreDAGet,new CacheDataDASet,new CacheDataDAGet,new CacheService(new CacheDataDASet,new CacheDataDAGet,new LivreDAGet,new DACache)))
 UtilisateurRouterGet(router,new UtilisateurServiceGet(new UtilisateurDAGet))
 EmpruntRouterPost(router,new EmpruntServicePost(new EmpruntDAPost,new UtilisateurDAGet,new LivreDAGet))
 AvisRouterPost(router,new AvisServicePost(new AvisDAPost))
-LivreRouterDelete(router,new LivreServiceDelete(new LivreDADelete,new EmpruntDAGet,new LivreDAGet))
+LivreRouterDelete(router,new LivreServiceDelete(new LivreDADelete,new CacheService(new CacheDataDASet,new CacheDataDAGet,new LivreDAGet,new DACache),new LivreDAGet))
 EmpruntRouterGet(router,new EmpruntServiceGet(new EmpruntDAGet));
 LivreRouterPut(router,new LivreServicePut(new LivreDAPut))
-LivreRouterPost(router,new LivreServicePost(new LivreDAPost,new CacheService(new CacheDataDASet,new CacheDataDAGet,new LivreDAGet),new DACache));
-InitRouterGet(router,new InitServiceGet(new CacheService(new CacheDataDASet,new CacheDataDAGet,new LivreDAGet)));
+LivreRouterPost(router,new LivreServicePost(new LivreDAPost,new CacheService(new CacheDataDASet,new CacheDataDAGet,new LivreDAGet,new DACache)));
+InitRouterGet(router,new InitServiceGet(new CacheService(new CacheDataDASet,new CacheDataDAGet,new LivreDAGet,new DACache)));
 
 
 app.listen(port, async () =>{
-    const cacheService = new CacheService(new CacheDataDASet,new CacheDataDAGet,new LivreDAGet);
+    const cacheService = new CacheService(new CacheDataDASet,new CacheDataDAGet,new LivreDAGet,new DACache);
     try{
         console.log(`server running on port ${port}`);
         syncDatabaseMysql();

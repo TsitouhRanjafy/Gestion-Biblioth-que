@@ -3,7 +3,7 @@ import { Livre } from "../../../types/index";
 
 export class LivreDADelete extends DBManager {
 
-    public async DeleteDataById(Id: string){
+    public async DeleteLivreById(Id: string){
         const deferredQuery = (): Promise<any> => {
             return Livre.destroy({
                 where: {
