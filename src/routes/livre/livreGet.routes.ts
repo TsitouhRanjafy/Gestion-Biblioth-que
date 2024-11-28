@@ -11,7 +11,8 @@ export const LivreRouterGet = (router: Router, service: LivreServiceGet): void =
             const data = await service.GetLivres(parseInt(offset),parseInt(limit),parseInt(tri));
             res.status(StatusCodes.OK).send(data);
         } catch (error) {
-            res.status(StatusCodes.BAD_REQUEST).send({"error": error})
+            console.error(" Error Router Livre Get ",error)
+            res.status(StatusCodes.BAD_REQUEST).send({"status": ReasonPhrases.BAD_REQUEST})
         }
     })
 
@@ -28,7 +29,10 @@ export const LivreRouterGet = (router: Router, service: LivreServiceGet): void =
                 })
             }
         } catch (error) {
-            res.status(StatusCodes.BAD_REQUEST).send({"error": error})
+            console.error(" Error Router Livre Get",error)
+            res.status(StatusCodes.BAD_REQUEST).json({
+                "status": ReasonPhrases.BAD_REQUEST
+            })
         }
     })
 

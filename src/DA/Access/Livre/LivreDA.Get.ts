@@ -45,7 +45,7 @@ export class LivreDAGet extends DBManager {
             const data = await this.ReadData(deferredQuery);
             return data;
         } catch (error) {
-            throw error
+            console.error(" Error DA Livre Get ",error);
         }
     }
 
@@ -57,7 +57,7 @@ export class LivreDAGet extends DBManager {
             const data = await this.ReadData(deferredQuery);
             return data;
         } catch (error) {
-            throw error
+            console.error(" Error DA Livre Get ",error);
         }
     }
 
@@ -87,7 +87,23 @@ export class LivreDAGet extends DBManager {
             const data = await this.ReadData(deferredQuery);
             return data;
         } catch (error) {
-            throw error
+            console.error(" Error DA Livre Get ",error);
+        }
+    }
+
+    public async getNombreToutLivre(){
+        const deferredQuery = (): Promise<any> => {
+            return Livre.findAll({
+                attributes: [
+                    [sequelize.fn('COUNT',sequelize.col('Livre.id')),'nombreToutLivre'],
+                ]
+            });
+        }
+        try {
+            const nombreToutLivre = await this.ReadData(deferredQuery);
+            return nombreToutLivre;
+        } catch (error) {
+            console.error(" Error DA Livre Get ",error);
         }
     }
 }

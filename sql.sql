@@ -462,3 +462,6 @@ WHERE id_livre="57495"
 
 SELECT * FROM emprunts
 ORDER BY date_emprunt DESC;
+
+SELECT COUNT(l.id) as nombreToutLivre FROM livres l
+ORDER BY id ASC
