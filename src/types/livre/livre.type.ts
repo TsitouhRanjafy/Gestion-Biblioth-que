@@ -50,7 +50,7 @@ Livre.init(
         },
         nombre_emprunts: {
             type: DataTypes.INTEGER,
-            allowNull: true,
+            allowNull: false,
             defaultValue: 0
         },
         createdAt: {

@@ -1,18 +1,18 @@
-import { EmpruntDAPost , UtilisateurDAGet , LivreDAGet } from "../../DA"
+import { EmpruntDAPost , UtilisateurDAGet , LivreDAGet, LivreDAPut } from "../../DA"
 import { IEmprunt, EmpruntCreationOptional } from "../../types/index";
 import { v4 as uuidv4 } from "uuid";
-
-
 
 export class EmpruntServicePost {
     private empruntDAPost: EmpruntDAPost;
     private utilisateurDAGet: UtilisateurDAGet;
     private livreDAGet: LivreDAGet;
+    private livreDAPut: LivreDAPut; 
 
-    constructor(empruntDAPost : EmpruntDAPost,utilisateurDAGet: UtilisateurDAGet,livreDAGet: LivreDAGet){
+    constructor(empruntDAPost : EmpruntDAPost,utilisateurDAGet: UtilisateurDAGet,livreDAGet: LivreDAGet,livreDAPut: LivreDAPut){
         this.empruntDAPost = empruntDAPost;
         this.utilisateurDAGet = utilisateurDAGet;
         this.livreDAGet = livreDAGet;
+        this.livreDAPut = livreDAPut;
     }
 
     public async NewEmprunt(data: IEmprunt) {
@@ -31,10 +31,10 @@ export class EmpruntServicePost {
                 return
             }
             const result = await this.empruntDAPost.NewEmprunt(newData)
+            await this.livreDAPut.UpdateLivreById(livre.dataValues.id,{ "nombre_emprunts": livre.dataValues.nombre_emprunts+1, "disponible" : "non" })
             return result;
         } catch (error) {
             throw error
         }
     }
-
 }

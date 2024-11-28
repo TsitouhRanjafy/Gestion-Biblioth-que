@@ -58,7 +58,7 @@ app.use('/',router)
 
 LivreRouterGet(router,new LivreServiceGet(new LivreDAGet,new CacheDataDASet,new CacheDataDAGet,new CacheService(new CacheDataDASet,new CacheDataDAGet,new LivreDAGet,new DACache)))
 UtilisateurRouterGet(router,new UtilisateurServiceGet(new UtilisateurDAGet))
-EmpruntRouterPost(router,new EmpruntServicePost(new EmpruntDAPost,new UtilisateurDAGet,new LivreDAGet))
+EmpruntRouterPost(router,new EmpruntServicePost(new EmpruntDAPost,new UtilisateurDAGet,new LivreDAGet,new LivreDAPut))
 AvisRouterPost(router,new AvisServicePost(new AvisDAPost))
 LivreRouterDelete(router,new LivreServiceDelete(new LivreDADelete,new CacheService(new CacheDataDASet,new CacheDataDAGet,new LivreDAGet,new DACache),new LivreDAGet))
 EmpruntRouterGet(router,new EmpruntServiceGet(new EmpruntDAGet));

@@ -25,6 +25,7 @@ export const EmpruntRouterPost = (router: Router, service: EmpruntServicePost) =
             const result = await service.NewEmprunt(newData);
             res.status(StatusCodes.OK).send(result)
         } catch (error) {
+            console.error(" Error Router Emprunt Post ", error)
             res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
                 "status" : ReasonPhrases.INTERNAL_SERVER_ERROR,
             })
