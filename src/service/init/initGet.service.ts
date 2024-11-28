@@ -7,8 +7,7 @@ export class InitServiceGet {
         try {
             const nbToutLivre = await this.cacheService.getNombreToutLivre();
             if (nbToutLivre){
-                const n = Math.ceil(parseInt(JSON.parse(nbToutLivre)[0].nombreToutLivre) / Math.floor(dataOnePage));
-                console.log(n);
+                const n = Math.ceil(nbToutLivre / Math.floor(dataOnePage));
                 return n;
             }
         } catch(error) {

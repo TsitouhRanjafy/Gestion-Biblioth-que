@@ -81,6 +81,8 @@ export class LivreDAGet extends DBManager {
                 ],
                 group : ['livre.id'],
                 order : [[sequelize.literal('nombre_emprunts'),'DESC']],
+                // limit: 20,
+                // offset: 0,
             });
         }
         try {

@@ -1,13 +1,14 @@
 import { Router , Request , Response } from "express";
 import { LivreServicePost } from "../../service"; 
-import { LivreCreationAttributes } from "../../types";
+import { ILivre } from "../../types";
 import { ReasonPhrases, StatusCodes } from "http-status-codes";
 
 export const LivreRouterPost = (router: Router,  service: LivreServicePost ) => {
 
     router.post('/new/book', async (req: Request, res: Response) => {
         try {
-            const newData: LivreCreationAttributes = req.body;
+            const newData: Required<ILivre> = req.body;
+            console.log(newData);
             const result = await service.NewLivre(newData)
             res.status(StatusCodes.CREATED).send(result)
         } catch (error) {

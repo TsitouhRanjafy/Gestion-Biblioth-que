@@ -13,10 +13,11 @@ export class CacheService {
         }
     }
 
-    public async getNombreToutLivre(){
+    public async getNombreToutLivre(): Promise<number | void> {
         try {
             const nombreToutLivre = await this.cacheDAGet.getCacheSimpleData("nombreToutLivre");
-            return nombreToutLivre;
+            if (nombreToutLivre)
+            return parseInt(JSON.parse(nombreToutLivre)[0].nombreToutLivre);
         } catch (error) {
             console.error(" Error Cache Service getNombreToutLivre ",error)
         }
