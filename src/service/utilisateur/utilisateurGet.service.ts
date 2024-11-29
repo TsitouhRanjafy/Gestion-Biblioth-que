@@ -12,7 +12,7 @@ export class UtilisateurServiceGet {
             const data = await this.utilisateurDAGet.GetUtilisateurs();
             return data;
         } catch (error) {
-            throw error
+            console.error(" Erro Service Utilisateur Get ",error)
         }
     }
 
@@ -21,7 +21,7 @@ export class UtilisateurServiceGet {
             const data = await this.utilisateurDAGet.GetUtilisateurById(id)
             return data;
         } catch (error) {
-            throw error
+            console.error(" Erro Service Utilisateur Get ",error)
         }
     }
 }

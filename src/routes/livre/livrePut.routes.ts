@@ -10,8 +10,7 @@ export const LivreRouterPut = (router: Router, service: LivreServicePut) => {
         const newData : Partial<LivreCreationAttributes> = req.body;
         try {
             const result = await service.UpdateLivreById(id,newData);
-            res.status(StatusCodes.ACCEPTED).json({
-                "status": ReasonPhrases.ACCEPTED,  
+            res.status(StatusCodes.OK).json({
                 "result": result
             })
         } catch (error) {

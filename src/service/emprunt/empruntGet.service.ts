@@ -1,10 +1,10 @@
 import { EmpruntDAGet } from "../../DA/index";
-import { triEmprunt } from "../../types";
+import { Emprunt, Livre, triEmprunt } from "../../types";
 
 export class EmpruntServiceGet {
     constructor(private empruntDAGet: EmpruntDAGet){}
 
-    public async GetEmpruntById(Id: string){
+    public async GetEmpruntById(Id: string): Promise<Emprunt | void>{
         try {
             const data = await this.empruntDAGet.GetEmpruntById(Id)
             return data;
@@ -13,19 +13,18 @@ export class EmpruntServiceGet {
         }
     }
 
-    public async GetEmpruntLivreById(Id: string){
+    public async GetEmpruntByIdLivre(Id: string): Promise<Livre | void>{
         try {
-            const data = await this.empruntDAGet.GetEmpruntLivreById(Id)
+            const data = await this.empruntDAGet.GetEmpruntByIdLivre(Id)
             return data;
         } catch (error) {
-            throw error
+            console.error(" Error Service Emprunt Get",error);
         }
     }
 
-    public async GetAllEmprunt(filter: triEmprunt ) {
+    public async GetAllEmprunt(tri: triEmprunt ): Promise<Livre[] | void> {
         try {
-            const data = await this.empruntDAGet.GetAllEmprunt(filter);
-            console.log(filter);
+            const data = await this.empruntDAGet.GetAllEmprunt(tri);
             return data;
         } catch (error) {
             console.error(" Service Emprunt Error ",error)

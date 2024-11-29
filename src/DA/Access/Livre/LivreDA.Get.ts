@@ -1,11 +1,10 @@
 import { DBManager } from "../../DBManager";
 import { Livre, triMethodeLivre } from "../../../types/index";
 import { sequelize } from "../../DBConnection/DBSync.mysql";
-import { Emprunt } from "../../../types/index";
 
 export class LivreDAGet extends DBManager {
 
-    public async GetLivres(offset: number, limit: number,triMethode: triMethodeLivre | void){
+    public async GetLivres(offset: number, limit: number,triMethode: triMethodeLivre | void): Promise<Livre[] | void>{
         const deferredQuery = (): Promise<any> => {
                 switch (triMethode) {
                     case triMethodeLivre.ASC_BY_DATEALPHABETIQUE:
@@ -60,7 +59,7 @@ export class LivreDAGet extends DBManager {
         }
     }
 
-    public async GetTopLivres() {
+    public async GetTopLivres(top: number) {
         const deferredQuery = (): Promise<any> => {
             return Livre.findAll({
                 attributes : [
@@ -69,19 +68,12 @@ export class LivreDAGet extends DBManager {
                     'auteur',
                     'sortie',
                     'disponible',
-                    [sequelize.fn('COUNT',sequelize.col('allEmprunt.id_emprunt')),'nombre_emprunts'],
+                    'nombre_emprunts'
                 ],
-                include: [
-                    {
-                        model : Emprunt,
-                        attributes : [],
-                        as: 'allEmprunt'
-                    },
-                ],
-                group : ['livre.id'],
-                order : [[sequelize.literal('nombre_emprunts'),'DESC']],
-                // limit: 20,
-                // offset: 0,
+                group : "id",
+                order : [['nombre_emprunts','DESC']],
+                limit: top,
+                offset: 0,
             });
         }
         try {

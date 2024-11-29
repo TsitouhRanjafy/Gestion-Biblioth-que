@@ -46,7 +46,8 @@ Livre.init(
         },
         disponible: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            defaultValue: 'oui'
         },
         nombre_emprunts: {
             type: DataTypes.INTEGER,
@@ -55,12 +56,12 @@ Livre.init(
         },
         createdAt: {
             type: DataTypes.DATE,
-            allowNull: true,
+            allowNull: false,
             defaultValue: DataTypes.NOW
         },
         updatedAt: {
             type: DataTypes.DATE,
-            allowNull: true,
+            allowNull: false,
             defaultValue: DataTypes.NOW
         }, 
     },

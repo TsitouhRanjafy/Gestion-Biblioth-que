@@ -15,10 +15,10 @@ export const EmpruntRouterGet = (router: Router, service: EmpruntServiceGet) => 
         }
     })
 
-    router.get('/emprunts/:filter',async (req: Request, res: Response) => {
-        const filter = req.params.filter;
+    router.get('/emprunts/current/:tri',async (req: Request, res: Response) => {
+        const tri = req.params.tri;
         try {
-            const data = await service.GetAllEmprunt(parseInt(filter));
+            const data = await service.GetAllEmprunt(parseInt(tri));
             res.status(StatusCodes.OK).send(data);
         } catch (error) {
             console.error(" Router Error ",error);
@@ -29,7 +29,7 @@ export const EmpruntRouterGet = (router: Router, service: EmpruntServiceGet) => 
     router.get('/emprunt/book/:id', async (req: Request, res: Response) => {
         const { id: id_livre } = req.params
         try {
-            const data = await service.GetEmpruntLivreById(id_livre)
+            const data = await service.GetEmpruntByIdLivre(id_livre)
             res.status(StatusCodes.OK).send(data)
         } catch (error) {
             res.status(StatusCodes.NOT_FOUND).json({"status":ReasonPhrases.NOT_FOUND})

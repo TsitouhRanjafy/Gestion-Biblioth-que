@@ -5,28 +5,6 @@ import { ReasonPhrases, StatusCodes } from "http-status-codes";
 
 export const LivreRouterGet = (router: Router, service: LivreServiceGet): void => {
 
-    router.get('/books/:offset/:limit', async (req: Request, res: Response) =>{
-        const { offset,limit } = req.params
-        try {
-            const data = await service.GetLivres(parseInt(offset),parseInt(limit));
-            res.status(StatusCodes.OK).send(data);
-        } catch (error) {
-            console.error(" Error Router Livre Get ",error)
-            res.status(StatusCodes.BAD_REQUEST).send({"status": ReasonPhrases.BAD_REQUEST})
-        }
-    })
-
-    router.get('/books/:offset/:limit/:tri', async (req: Request, res: Response) =>{
-        const { tri,offset,limit } = req.params
-        try {
-            const data = await service.GetLivresTri(parseInt(offset),parseInt(limit),parseInt(tri));
-            res.status(StatusCodes.OK).send(data);
-        } catch (error) {
-            console.error(" Error Router Livre Get ",error)
-            res.status(StatusCodes.BAD_REQUEST).send({"status": ReasonPhrases.BAD_REQUEST})
-        }
-    })
-
     router.get('/book/:id', async (req: Request, res: Response) =>{
         
         const { id: id_livre } = req.params
@@ -47,14 +25,36 @@ export const LivreRouterGet = (router: Router, service: LivreServiceGet): void =
         }
     })
 
-    router.get('/books/top',async (req: Request, res: Response) => {
+    router.get('/topbooks/:top',async (req: Request, res: Response) => {
+        const { top } = req.params;
         try {
-            const data = await service.GetTopLivres();
+            const data = await service.GetTopLivres(parseInt(top));
             res.status(StatusCodes.OK).send(data)
         } catch (error) {
-            res.status(StatusCodes.BAD_REQUEST).json({
-                "status" : ReasonPhrases.BAD_REQUEST
-            })
+            console.error(" Error Router Livre Get ",error);
+            res.status(StatusCodes.BAD_REQUEST).json({ "status" : ReasonPhrases.BAD_REQUEST })
+        }
+    })
+
+    router.get('/books/:offset/:limit', async (req: Request, res: Response) =>{
+        const { offset,limit } = req.params
+        try {
+            const data = await service.GetLivres(parseInt(offset),parseInt(limit));
+            res.status(StatusCodes.OK).send(data);
+        } catch (error) {
+            console.error(" Error Router Livre Get ",error)
+            res.status(StatusCodes.BAD_REQUEST).send({"status": ReasonPhrases.BAD_REQUEST})
+        }
+    })
+
+    router.get('/books/:offset/:limit/:tri', async (req: Request, res: Response) =>{
+        const { tri,offset,limit } = req.params
+        try {
+            const data = await service.GetLivresTri(parseInt(offset),parseInt(limit),parseInt(tri));
+            res.status(StatusCodes.OK).send(data);
+        } catch (error) {
+            console.error(" Error Router Livre Get ",error)
+            res.status(StatusCodes.BAD_REQUEST).send({"status": ReasonPhrases.BAD_REQUEST})
         }
     })
 }

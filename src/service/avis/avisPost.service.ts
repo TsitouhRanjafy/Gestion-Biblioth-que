@@ -8,15 +8,15 @@ export class AvisServicePost {
         this.avisDaPost = avisDaPost;
     }
 
-    public async NewAvis(IData: IAvis) {
+    public async NewAvis(IData: Required<IAvis>) {
         try {
             if ( (IData.note >= 10) && (IData.note < 0) ){
                 return;
             }
             const result = await this.avisDaPost.NewAvis(IData)
-            return result;
+            return result? result:0;
         } catch (error) {
-            throw error
+            console.error(" Error Service Avis Post ",error)
         }
     }
 }

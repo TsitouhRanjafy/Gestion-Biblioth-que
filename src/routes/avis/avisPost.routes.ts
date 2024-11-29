@@ -14,25 +14,24 @@ export const AvisRouterPost = (router: Router, service: AvisServicePost) => {
         const {
             note : note,
             commentaire : commentaire,
-            datetime : datetime
         } = req.body
 
-        const data: IAvis = {
+        if (!commentaire || !note) res.status(StatusCodes.BAD_REQUEST).json({ "status": ReasonPhrases.BAD_REQUEST });
+        const data: Required<IAvis> = {
             id_livre: id_livre,
             id_utilisateur: id_utilisateur,
-            note:  note,
-            commentaire: commentaire,
-            datetime : datetime
+            note:  parseInt(note),
+            commentaire: commentaire
         }
+
         try {
             const result = await service.NewAvis(data)
-            res.status(StatusCodes.OK).send(result);
+            res.status(StatusCodes.OK).json({ "status": result });
         } catch (error) {
+            console.error(" Error Router Avis Post ",error)
             res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
                 "status": ReasonPhrases.INTERNAL_SERVER_ERROR
             })
         }
-
-
     })
 }

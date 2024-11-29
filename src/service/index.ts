@@ -22,5 +22,5 @@ export {
     LivreServicePost,
     CacheService,
     InitServiceGet,
-    EmpruntServiceDelete
+    EmpruntServiceDelete,
 }

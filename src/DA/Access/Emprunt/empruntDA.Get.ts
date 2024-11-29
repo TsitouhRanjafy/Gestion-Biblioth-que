@@ -1,5 +1,5 @@
 import { DBManager } from "../../DBManager";
-import { Emprunt, triEmprunt } from "../../../types/index";
+import { Emprunt, Livre, triEmprunt } from "../../../types/index";
 
 
 export class EmpruntDAGet extends DBManager {
@@ -19,7 +19,7 @@ export class EmpruntDAGet extends DBManager {
             console.error(" Error DA Emprunt Get ");
         }
     }
-    public async GetEmpruntLivreById(Id: string) {
+    public async GetEmpruntByIdLivre(Id: string) {
         const deferredQuery = (): Promise<any> => {
             return Emprunt.findOne({
                 where: {
@@ -35,7 +35,7 @@ export class EmpruntDAGet extends DBManager {
         }
     }
 
-    public async GetAllEmprunt(tri: triEmprunt | any) {
+    public async GetAllEmprunt(tri: triEmprunt | any): Promise<Livre[] | void> {
         const deferredQuery = (): Promise<any> => {
             switch (tri) {
                 case triEmprunt.ASC_BY_DATEEMPRUNT:

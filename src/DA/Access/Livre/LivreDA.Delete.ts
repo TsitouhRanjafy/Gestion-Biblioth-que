@@ -15,7 +15,7 @@ export class LivreDADelete extends DBManager {
             const result = await this.DeleteData(deferredQuery);
             return result;
         } catch (error) {
-            throw error
+            console.error(" Error DA Livre Delete ",error)
         }
 
     }

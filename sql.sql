@@ -465,3 +465,7 @@ ORDER BY date_emprunt DESC;
 
 SELECT COUNT(l.id) as nombreToutLivre FROM livres l
 ORDER BY id ASC
+
+SELECT * FROM livres
+GROUP BY id 
+ORDER BY nombre_emprunt DESC

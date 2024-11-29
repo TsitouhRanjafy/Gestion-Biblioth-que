@@ -13,6 +13,7 @@ export class EmpruntServiceDelete {
     public async DeleteEmpruntById(id: string) {
         try {
             const data = await this.empruntDAGet.GetEmpruntById(id)
+            if (!data[0]) return 0;
             const id_livre = data[0].dataValues.id_livre;
             await this.empruntDAPost.NewEmpruntHistorique(data[0].dataValues)
             const result = await this.empruntDADelete.DeleteEmpruntById(id);

@@ -8,12 +8,11 @@ export const LivreRouterPost = (router: Router,  service: LivreServicePost ) => 
     router.post('/new/book', async (req: Request, res: Response) => {
         try {
             const newData: Required<ILivre> = req.body;
-            console.log(newData);
             const result = await service.NewLivre(newData)
-            res.status(StatusCodes.CREATED).send(result)
+            res.status(StatusCodes.OK).json({ "status": result })
         } catch (error) {
             console.error(" Router Livre Post Error ",error);
-            res.status(StatusCodes.BAD_REQUEST).json({"status": ReasonPhrases.BAD_REQUEST})
+            res.status(StatusCodes.BAD_REQUEST).json({"status": ReasonPhrases.BAD_REQUEST});
         }
     })
 }
