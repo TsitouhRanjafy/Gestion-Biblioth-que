@@ -2,3 +2,7 @@
     . Contient la logique métier pure
     . Aucune dépendance externe ne doit être introduite dans cette couche
 2 Application Layer ()
+
+
+throw error
+retourne un seul ou deux 

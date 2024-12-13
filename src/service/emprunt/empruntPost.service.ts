@@ -3,17 +3,13 @@ import { IEmprunt, EmpruntCreationOptional, Emprunt } from "../../types/index";
 import { v4 as uuidv4 } from "uuid";
 
 export class EmpruntServicePost {
-    private empruntDAPost: EmpruntDAPost;
-    private utilisateurDAGet: UtilisateurDAGet;
-    private livreDAGet: LivreDAGet;
-    private livreDAPut: LivreDAPut; 
 
-    constructor(empruntDAPost : EmpruntDAPost,utilisateurDAGet: UtilisateurDAGet,livreDAGet: LivreDAGet,livreDAPut: LivreDAPut){
-        this.empruntDAPost = empruntDAPost;
-        this.utilisateurDAGet = utilisateurDAGet;
-        this.livreDAGet = livreDAGet;
-        this.livreDAPut = livreDAPut;
-    }
+    constructor(
+        private empruntDAPost : EmpruntDAPost,
+        private utilisateurDAGet: UtilisateurDAGet,
+        private livreDAGet: LivreDAGet,
+        private livreDAPut: LivreDAPut
+    ){}
 
     public async NewEmprunt(data: IEmprunt): Promise<Emprunt | void> {
         const id : string = uuidv4();

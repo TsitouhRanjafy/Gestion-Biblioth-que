@@ -10,6 +10,7 @@ export const LivreRouterGet = (router: Router, service: LivreServiceGet): void =
         const { id: id_livre } = req.params
         try {
             const data = await service.GetLivreById(id_livre)
+            
             if (data){
                 res.status(StatusCodes.OK).send(data);
             } else {

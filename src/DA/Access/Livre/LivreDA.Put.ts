@@ -18,6 +18,7 @@ export class LivreDAPut extends DBManager {
             return nbLignesAffectees;
         } catch (error) {
             console.error(' Data Access Error', error)
+            throw error
         }
     }
 }
