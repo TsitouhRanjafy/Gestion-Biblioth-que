@@ -1,0 +1,58 @@
+<main class="flex flex-col justify-center items-center overflow-hidden h-full">
+    <div class="flex flex-col justify-center w-fit gap-y-6"> 
+        <ul class="level1 level1-1 w-fit cursor-pointer relative">
+            <div (click)="toggleCollaction()" class="w-36 flex flex-row justify-start text-sm items-center">
+                <svg class="" width="21" height="24" viewBox="0 0 21 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <rect width="21" height="24" fill="url(#pattern0_2005_18)"/>
+                    <defs>
+                    <pattern id="pattern0_2005_18" patternContentUnits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image0_2005_18" transform="matrix(0.01 0 0 0.00875 0 0.0625)"/>
+                    </pattern>
+                    <image id="image0_2005_18" width="100" height="100" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAADs0lEQVR4nO2dTYsVRxiFKxA1QYX4sQrDXKbOqblDR0ZhoiCIAy4ixkUkQdyp6NIQyB9QQZ0sshaiCIobUReKoBE1ZGcIARcJ2YZAQlAQvxaCGqxQOMZZeNtZzNz39dZ54GyHmvNQ3X2ru6tDEEIIIYQQQgghRAV0u90PSX5N8gaAvwA8IZkHJHdIfg9gRwjhneCZTqfzHoBvSD52UFzuQ34cHR1dGbzOCgA/Oygp9zm/DA0NvR880e12l5L81UE52SgHgidInnFQSrYKgLuTk5PvBg8AWE/yuXUpNE6M8ePgAQDnrcuggwD4zMOhahGAR9Zl0Ee2W/sIKaU1DorITmIvJMa4xUER2UnshZRBOCgiO4mE0F6ChNC++CqF/JBS+mr6789LUkq7AXwH4KmEtMv4tp+rqDHGDXMkZSBnyO2maRYa/B/HJOT1Qq72W8a0kL0S8hohAH63EALgoIT0OGyllLb2U0an0/mg3NWUkB5CADwCsK/c8JpPEU3TLCH5CcnfdJU1mNkerNHSCSWE9jNBM4T2ZUsI7QuWENqXKiEOiswSYl9elhD7wrKE2JeUJcS+mCwh9mVkB9HSCe0lSAjti5cQ2pctIbQvWEJoX6qEOCgyS4h9eVlC7AvLEmJfUpYQ+2KyhNiXkR1ESye0lyAhtC9eQmhftoTw7csX1g8u6slFvhKSUtpo7UNC+EJGeQNreHh4mbUPCeH/M+Rs8IAetmaR8SClFIMHJIQPYoybghdqFYIXb+2edTMzZiukbH4J4Gh5J3w+3zlnH1OupsprcMEjbUKKjJTSOusxVsUbhBy1Hl91pJQ+bzlk7bEeX3UA+KhFyH7r8VUJyQs9Dll/uz35DTIxxlUt55Fb5Tp9fHx8sfU4q6LSHa0zgIckT42Nja0IngCwzboc2or5yd3G/AAuWRdDw5R9t4IXyjminC8qnyU7ghdInrYuhLYpW60jeGBkZGSt9n7n4eCFsur5hqn8D8nLJM8NYI7HGD8NXpjF3u9H3HzGoQZSSqtbZsY16/FVR9ve7wC+tB5fdZRr715CykbI1uOrjvIxLJJ/9pgh163HVyXlib2Wk/rUxMTEAusxVkXZiZrkvRYpt0lecXCJem6uA+BEv7e1nRUADjn4tZwNMxU8UR6jnP4BmCvNczdLJy8BsJnkvw7Kyax9cfElAHYCeGZdDmtffp9JeZAMwB/WBbG/uenuBtVMyqVujHEXyYsD+PnuPCP3AZxsmma5dedCCCGEEEIIIYQIc8x/FQL39Hv1a3gAAAAASUVORK5CYII="/>
+                    </defs>
+                </svg>                    
+                Collection
+                <svg class="w-3 right-0 absolute"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" [attr.d]="showCollection? 'm19.5 8.25-7.5 7.5-7.5-7.5':'m8.25 4.5 7.5 7.5-7.5 7.5' " />
+                </svg>                  
+            </div>
+            <li class="cursor-pointer text-xs left-6 top-0" [ngClass]="showCollection? 'relative block':'absolute hidden' ">Mystery</li>
+            <li class="cursor-pointer text-xs left-6 top-0" [ngClass]="showCollection? 'relative block':'absolute hidden' ">Fantastic</li>
+            <li class="cursor-pointer text-xs left-6 top-0" [ngClass]="showCollection? 'relative block':'absolute hidden' ">Romance</li>
+            <li class="cursor-pointer text-xs left-6 top-0" [ngClass]="showCollection? 'relative block':'absolute hidden' ">Love</li>
+            <li class="cursor-pointer text-xs left-6 top-0" [ngClass]="showCollection? 'relative block':'absolute hidden' ">Adventure</li>
+        </ul>
+        <ul class="level1 level1-2 w-fit cursor-pointer ">
+            <div class="w-36 flex flex-row justify-start text-sm items-center">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <rect width="24" height="24" fill="url(#pattern0_2005_15)"/>
+                    <defs>
+                    <pattern id="pattern0_2005_15" patternContentUnits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image0_2005_15" transform="scale(0.01)"/>
+                    </pattern>
+                    <image id="image0_2005_15" width="100" height="100" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAACbklEQVR4nO3dv2oUUQCF8QvBShBLA8KSnBNYLGIRbWy0Eh9AO9/B2kKxFXs7yzRp7XwGFQw+gIWNfyCNRCx0ZTFiCKhk5u7MmZnvB7fe2fkyyakmpQAAAAAAgAmazWbnbT+U9FrSF9uL5KNf1/jK9oPltZcxkXRD0se+b7Kbnw+2r5cx2NjYuGr7MOCmLlqew83NzStl4NZsvw24mYtKZ3/5ncpQSboVcBMXlc/NMlS2nwTcwEXNI+lxGSpJuyMMsluGyvZe3zfQ9c9eGSqChCFIGIKEIUgYgoQhSBiChCFIGIKEIUgYgoQhSBiChCFIGIKEIUgYgoQhSBiChCFIGIKEIUgYgoQhSBiChCFIGIKEIUgYgoQhSBiChCFIGIKEIUgYgoQhSBiChCFIGIKEIUgYgoQhSBiChCFIGIKEIUgYgoQhyHSDHBwdXmDWdxBJ77e2ti7bvmT7HW+U6zfIvu2Lvz9vNptdsP2SV/z1EETSC9vnTn7m9vb2WUnPeedih0EkPdvZ2Tnzj4dzTdLTFUXhJZj+czN+SHp0ih+Ie7a/E2QFT4ikb7bvNriGO7a/8oTUDXKw/A8LpSFJ1yR95ldWhSA6mrVNYxx7UmrN4kn/DXlzfNa2VWkWTzOI/jJr26owi6cXRP+ftW21mcWTCvLjNLO2wvU1mcXTCNJ01rbVYBZPIkirWdvW0Sz+RJCKs7bDWTzqJ6TqrO1oFo8zyKpmbQezeHxBOpi1q5zFowrS6axd0SweR5C+Zm1btm+fmMWjCNLrrK08i4cdJGXWVpzFww0i6f58Pl8vIzGfz9eX36nv6wAAAAAAAKUjPwEadD+TaTcpUgAAAABJRU5ErkJggg=="/>
+                    </defs>
+                </svg>                    
+                Saved
+            </div>
+        </ul>
+        <ul class="level1 level1-3 w-fit cursor-pointer ">
+            <div class="w-36 flex flex-row justify-start text-sm items-center">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <rect width="24" height="24" fill="url(#pattern0_2006_24)"/>
+                    <defs>
+                    <pattern id="pattern0_2006_24" patternContentUnits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image0_2006_24" transform="scale(0.01)"/>
+                    </pattern>
+                    <image id="image0_2006_24" width="100" height="100" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD20lEQVR4nO2dzWtVRxjGp9oKETf1Aw1cEu55nhMuB1xIrIIfpAspBdFaJHTR2oVfGzetrurKCLoQFN3HhYJd+Fe0li4El1LFv6BSW20TsTWpIwNZhBDlniT3vu+ZPD94twP3+d05c86cmTMhCCGEEEIIIURGDA4OrgdwBMBFADdJ3m1iAbgJYALAF61WayA0DZJbANwg+ZJkzKxeArg+MjKyOTQBAJ+TfO4guNjj+ovkZ8EzAL4lOesgrNiPAjBD8pvgkaIo9gH4zzok9l/KvwD2BE+Mjo5+RPKJdTi0k/I4ZRC8AOC0dSi0l3IyeIHkr9aB0F7IveCBTqezieT/1oHQvmarqtpo7SOUZbnLQRjRQxVFsdPD+HHYOgj6qUMexo9xB0FEJzVu7UNCKCHRQU9QD6F92BJC+4AlhPahSoiDIKOE2IcXJcQ+sCgh9iFFCbEPJkqIfRjRQWnqhPYSJIT2wUsIexfi7yQvkfwawFkA9yXE7h/9y9DQ0McLJrA/AHBePaTPMgBMtdvtre95rfC9Llnsq5A7XbzrqStFd1lcupTLXb6AqyNFQrj0HvJjN0JqSpEQLmMMGR4e3rbCUiSEyxtHfk57WFZQioRw+YP7vaqqNtSQ8p2EsDFS1EPoS4qE0FdPyU8IgCmSD0k+sCgAV9L0yRIH+qyEPE/bw1xtfKkvJQ8hAF6nVfShwQC4kI0QkrdC81lDckcuQo5b/45skJA8hdwOGdDpdDblMqjPlGW5OzSYtE+f5NGcbntfpC9BVFW1LjSMoii2k3ya013W/N4y3bAHwx0A/sjqOcTTdHxVY+oEwCiAZ/PakBAaySiKYi+Avxe0IyE0kFGW5X4A/yzSloSw/5epT+cmQBdrT0LYx1e4ZVkeJPnqPW1KCHu0UG4hRVF82cX3wCSEPVwoN+8y9VWake6iXQlhjxfKAThW47OFEsIeLpRLHyWr+ekpCWGPFsoBOEPyTc12JYS92Y7wwxJkSAhXfsPOOW3YyavGgzU5TS5SQswDjBJiH1qUEPugooTYhxMlxD6QKCG6y4rz/gS67aV9r5AQ2gcvIbQPW0JoH7CE0D5UCXEQZMxGiI6roK/jKtrt9icO/pnRQ6WlpV6OPFo1Zxfy3TW7yNtHG9KrUAeBROPe8VPwAoBT1oHQvk4ER6wF8Nsq7h2PxsbGPgyeSMePpmNIrcNh/+uV2+14aZXf3IG9q6VnzKTVKsEz6UhrAH+uAhnPyrI8EJpAuhUGcG1uv2BuIqZJXnVxqmddWq3WQHp6BTABYJLk3SYWgMm5b5kcSr/JOlchhBBCCCGECCvIWzSV9kzbNhQ4AAAAAElFTkSuQmCC"/>
+                    </defs>
+                </svg>                    
+                Logout
+            </div>
+        </ul>
+    </div>
+    <div class="w-36 flex justify-center items-center">
+        Logo
+    </div>
+</main>
+

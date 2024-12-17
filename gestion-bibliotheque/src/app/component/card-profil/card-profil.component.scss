@@ -1,0 +1,15 @@
+main{
+    div{
+        &.container{
+            background: linear-gradient(316deg, rgba(200, 200, 200, 0.7) 0%, #626262 100%);
+        }
+        div{
+            // background-color: #242424;
+            div{
+                &:nth-child(1){
+                        background-color: #313131;
+                }
+            }
+        }
+    }
+}
