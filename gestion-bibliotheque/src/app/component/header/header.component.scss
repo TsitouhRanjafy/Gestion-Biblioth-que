@@ -1,0 +1,16 @@
+main{
+    section{
+        border: solid 1px aqua;
+        &:nth-child(1){
+            div{
+                border:solid 1px red;
+                &#logo{
+                    flex: 0.4;
+                }
+                &#outils{
+                    flex: 1;
+                }
+            }
+        }
+    }
+}
