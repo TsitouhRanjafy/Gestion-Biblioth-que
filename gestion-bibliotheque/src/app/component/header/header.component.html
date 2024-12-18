@@ -7,31 +7,64 @@
             </div>
         </div>
         <div class="flex flex-row" id="outils">
-            <div class="flex flex-row justify-center items-center overflow-hidden w-full gap-8">
+            <div class="flex flex-row justify-evenly items-center ml-20 mr-10 overflow-hidden w-full">
                 <div class="w-96">
                     <app-search-bar class="left-0"/>
                 </div>
-                <app-text-notification class="cursor-pointer" title="New Release" [newRelease]="newRelease"/>
-                <app-text-notification class="cursor-pointer" title="Featured" [newRelease]="featured"/>
-                <svg width="24" height="24" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <rect width="42" height="42" fill="url(#pattern0_2052_34)"/>
-                    <defs>
-                    <pattern id="pattern0_2052_34" patternContentUnits="objectBoundingBox" width="1" height="1">
-                    <use xlink:href="#image0_2052_34" transform="scale(0.01)"/>
-                    </pattern>
-                    <image id="image0_2052_34" width="100" height="100" xlink:href="data:image/png;base64,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"/>
-                    </defs>
-                </svg>               
+                <app-text-notification 
+                    class="cursor-pointer" 
+                    title="New Release" 
+                    [newNotification]="newRelease" 
+                    [toggleNotificationShow]="showRelease"
+                    (onChangeRelease)="toggleCardNotification($event)"
+                />
+                <app-text-notification 
+                    class="cursor-pointer" 
+                    title="Featured" 
+                    [newNotification]="featured"
+                    [toggleNotificationShow]="showFeatured"
+                    (onChangeRelease)="toggleCardNotification($event)"
+                />
+                <div class="p-1 hover:bg-bluehover active:bg-blueactive rounded-md">
+                    <svg class="r right-0" width="24" height="24" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect width="42" height="42" fill="url(#pattern0_2052_34)"/>
+                        <defs>
+                        <pattern id="pattern0_2052_34" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#image0_2052_34" transform="scale(0.01)"/>
+                        </pattern>
+                        <image id="image0_2052_34" width="100" height="100" xlink:href="data:image/png;base64,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"/>
+                        </defs>
+                    </svg>               
+                </div>
             </div>
         </div>
     </section>
 
-    <section>
-        <ul>
-            <li>list 1 c</li>
-            <li>list 2 c</li>
-            <li>list 2 c</li>
-            <li>list 2 c</li>
-        </ul>
+    <section class="w-1/4 flex flex-col  bg-blackprimary absolute mt-14 h-2/3 right-0 rounded-l-lg" [ngClass]="showRelease? 'a':'toggleHidden' ">
+        <div class="w-full flex flex-row justify-between items-center p-5">
+            <p class="select-none text-sm text-primary ">New Release</p>
+            <div class="w-9 h-9 flex justify-center items-center hover:bg-secondary active:bg-thirty rounded-md" (click)="hiddenNotificationCard()" >
+                <svg width="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>              
+            </div>
+        </div>
+        <div class="px-5 relative">
+            <app-single-notification/>
+        </div>
+    </section>
+
+    <section class="w-1/4 flex flex-col bg-blackprimary absolute mt-14 h-2/3 right-0" [ngClass]="showFeatured? 'a':'toggleHidden'">
+        <div class="w-full flex flex-row justify-between items-center p-5">
+            <p class="select-none text-sm text-primary ">Featured</p>
+            <div class="w-9 h-9 flex justify-center items-center hover:bg-secondary active:bg-thirty rounded-md" (click)="hiddenNotificationCard()" >
+                <svg width="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>              
+            </div>
+        </div>
+        <div class="px-5 relative">
+            <app-single-notification/>
+        </div>
     </section>
 </main>

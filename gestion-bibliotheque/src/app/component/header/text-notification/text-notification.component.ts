@@ -1,5 +1,6 @@
 import { NgIf } from '@angular/common';
-import { Component , Input} from '@angular/core';
+import { Component , Input, output, Output} from '@angular/core';
+import { IEventEmitNotification } from '../../../models/type.model';
 
 @Component({
   selector: 'app-text-notification',
@@ -14,5 +15,13 @@ export class TextNotificationComponent {
 
 
   @Input({required: true}) title: string = 'title';
-  @Input() newRelease: boolean = false;
+  @Input() newNotification: boolean = false;
+  @Input() toggleNotificationShow: boolean = false;
+  toggleNotificationShowChange = output<IEventEmitNotification>({alias: 'onChangeRelease'})
+
+  toggleNofication(){
+    this.toggleNotificationShow = !this.toggleNotificationShow;
+    this.toggleNotificationShowChange.emit({title: this.title,status: this.toggleNotificationShow})
+  }
+
 }

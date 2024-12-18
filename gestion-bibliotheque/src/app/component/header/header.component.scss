@@ -1,15 +1,22 @@
 main{
     section{
-        border: solid 1px aqua;
+        //border: solid 1px aqua;
         &:nth-child(1){
             div{
-                border:solid 1px red;
+                // border:solid 1px red;
                 &#logo{
                     flex: 0.4;
                 }
                 &#outils{
                     flex: 1;
                 }
+            }
+        }
+        &:nth-child(2),&:nth-child(3){
+            transition: transform 400ms ease;
+            &.toggleHidden{
+                transform: translateX(100%);
+                transition: transform 400ms ease;   
             }
         }
     }

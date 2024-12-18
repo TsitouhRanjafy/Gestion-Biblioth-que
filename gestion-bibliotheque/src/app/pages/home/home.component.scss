@@ -22,7 +22,7 @@ main{
                 div{
                     border: 1px yellow solid;
                     &:nth-child(1){
-                        flex: 1;
+                        flex: 0.5;
                     }
                     &:nth-child(2){
                         flex: 2;

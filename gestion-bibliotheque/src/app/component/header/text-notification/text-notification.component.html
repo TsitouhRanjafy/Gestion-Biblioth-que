@@ -1,4 +1,4 @@
-<div class="w-max p-2 hover:bg-bluehover active:bg-blueactive rounded-md flex flex-row text-sm font-bold">
+<div class="w-max p-2 hover:bg-bluehover active:bg-blueactive rounded-md flex flex-row text-sm font-bold" (click)="toggleNofication()">
     <p class="select-none">{{title}}</p>
-    <div class="w-1 h-1 bg-redpropre relative rounded-full mt-0.5 mr-0.5" *ngIf="newRelease"></div>
+    <div class="w-1 h-1 bg-redpropre relative rounded-full mt-0.5 mr-0.5" *ngIf="newNotification"></div>
 </div>
