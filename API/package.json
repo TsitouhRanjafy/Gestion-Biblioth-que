@@ -1,0 +1,42 @@
+{
+  "name": "noderedis",
+  "version": "1.0.0",
+  "description": "Initialisation de redis avec node",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec ts-node ./src/server.ts",
+    "build": "npx tsc && node ./dist/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^5.0.0",
+    "@types/express-session": "^1.18.0",
+    "@types/http-status-codes": "^1.2.0",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/mongoose": "^5.11.96",
+    "@types/node": "^22.9.0",
+    "@types/yup": "^0.29.14",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1",
+    "express-yup-middleware": "^1.2.4",
+    "http-status-codes": "^2.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.8.0",
+    "mysql2": "^3.11.4",
+    "nodemon": "^3.1.7",
+    "redis": "^4.7.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3",
+    "uuid": "^11.0.2",
+    "yup": "^1.4.0"
+  },
+  "devDependencies": {
+    "sequelize": "^6.37.5"
+  }
+}
